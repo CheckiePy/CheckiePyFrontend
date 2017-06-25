@@ -2,19 +2,21 @@
 
 ## Getting started
 
-### Prerequisites
+### 1. Prerequisites
 
+* Node.js
 * Angular CLI
 
-### Setup and run
+### 2. Setup and run
 
 ```
 git clone https://github.com/acsproj/acsfrontend.git
-cd acsfrontend
+cd acsfrontend/acs/
+npm install
 ng serve
 ```
 
-## License
+# License
 
 The MIT License (MIT) Copyright (c) 2017 Artem Ustimov
 
