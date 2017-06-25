@@ -6,29 +6,16 @@
                 <mdl-layout-spacer></mdl-layout-spacer>
                 <!-- Navigation. We hide it in small screens. -->
                 <nav class="mdl-navigation">
-                    <a class="mdl-navigation__link" >Settings</a>
-                    <a class="mdl-navigation__link" >Logout</a>
+                    <a routerLink="" class="mdl-navigation__link">Home</a>
+                    <a routerLink="settings" class="mdl-navigation__link">Settings</a>
+                    <a (click)="logout()" class="mdl-navigation__link">Logout</a>
                 </nav>
             </mdl-layout-header-row>
         </mdl-layout-header>
-        <!--<mdl-layout-drawer>-->
-            <!--<mdl-layout-title>Title</mdl-layout-title>-->
-            <!--<nav class="mdl-navigation">-->
-                <!--<a class="mdl-navigation__link" >Link</a>-->
-                <!--<a class="mdl-navigation__link" >Link</a>-->
-                <!--<a class="mdl-navigation__link" >Link</a>-->
-            <!--</nav>-->
-        <!--</mdl-layout-drawer>-->
         <mdl-layout-content>
             <!-- Your content goes here -->
-            <mdl-tabs mdl-ripple mdl-tab-active-index="0">
-                <mdl-tab-panel mdl-tab-panel-title="Code styles">
-                    <app-codestyle></app-codestyle>
-                </mdl-tab-panel>
-                <mdl-tab-panel mdl-tab-panel-title="Repositories">
-                    <app-repository></app-repository>
-                </mdl-tab-panel>
-            </mdl-tabs>
+            <router-outlet></router-outlet>
         </mdl-layout-content>
     </mdl-layout>
 </div>
+

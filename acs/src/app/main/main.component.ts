@@ -13,4 +13,7 @@ export class MainComponent implements OnInit {
     ngOnInit() {
     }
 
+    logout() {
+        alert('Logout');
+    }
 }

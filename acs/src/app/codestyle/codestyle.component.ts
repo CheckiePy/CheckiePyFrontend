@@ -13,4 +13,7 @@ export class CodestyleComponent implements OnInit {
     ngOnInit() {
     }
 
+    addCodeStyle() {
+        alert('This is a simple Alert');
+    }
 }

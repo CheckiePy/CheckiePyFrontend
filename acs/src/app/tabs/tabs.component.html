@@ -1,0 +1,9 @@
+<mdl-tabs *ngIf="!isSettings" mdl-ripple mdl-tab-active-index="0">
+    <mdl-tab-panel mdl-tab-panel-title="Code styles">
+        <app-codestyle></app-codestyle>
+    </mdl-tab-panel>
+    <mdl-tab-panel mdl-tab-panel-title="Repositories">
+        <app-repository></app-repository>
+    </mdl-tab-panel>
+</mdl-tabs>
+<app-settings *ngIf="isSettings"></app-settings>
