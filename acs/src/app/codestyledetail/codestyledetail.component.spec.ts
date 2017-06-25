@@ -1,20 +1,20 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import {CodeStyleComponent} from './codestyle.component';
+import {CodeStyleDetailComponent} from './codestyledetail.component';
 
-describe('CodeStyleComponent', () => {
-    let component: CodeStyleComponent;
-    let fixture: ComponentFixture<CodeStyleComponent>;
+describe('CodeStyleDetailComponent', () => {
+    let component: CodeStyleDetailComponent;
+    let fixture: ComponentFixture<CodeStyleDetailComponent>;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            declarations: [CodeStyleComponent]
+            declarations: [CodeStyleDetailComponent]
         })
             .compileComponents();
     }));
 
     beforeEach(() => {
-        fixture = TestBed.createComponent(CodeStyleComponent);
+        fixture = TestBed.createComponent(CodeStyleDetailComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
     });

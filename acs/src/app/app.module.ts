@@ -10,20 +10,22 @@ import {WebService} from './web.service';
 import {AppComponent} from './app.component';
 import {LandingComponent} from './landing/landing.component';
 import {MainComponent} from './main/main.component';
-import {CodestyleComponent} from './codestyle/codestyle.component';
+import {CodeStyleComponent} from './codestyle/codestyle.component';
 import {RepositoryComponent} from './repository/repository.component';
 import {SettingsComponent} from './settings/settings.component';
 import {TabsComponent} from './tabs/tabs.component';
+import {CodeStyleDetailComponent} from './codestyledetail/codestyledetail.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         LandingComponent,
         MainComponent,
-        CodestyleComponent,
+        CodeStyleComponent,
         RepositoryComponent,
         SettingsComponent,
-        TabsComponent
+        TabsComponent,
+        CodeStyleDetailComponent
     ],
     imports: [
         BrowserModule,
@@ -32,7 +34,9 @@ import {TabsComponent} from './tabs/tabs.component';
         MdlModule,
         RouterModule.forRoot([
             {path: '', component: TabsComponent},
-            {path: 'settings', component: SettingsComponent}
+            {path: 'settings', component: SettingsComponent},
+            {path: 'codestyle', component: CodeStyleDetailComponent},
+            {path: 'codestyle/:id', component: CodeStyleDetailComponent}
         ])
     ],
     providers: [WebService],

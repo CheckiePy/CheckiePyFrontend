@@ -5,7 +5,7 @@ import {Component, OnInit} from '@angular/core';
     templateUrl: './codestyle.component.html',
     styleUrls: ['./codestyle.component.css']
 })
-export class CodestyleComponent implements OnInit {
+export class CodeStyleComponent implements OnInit {
 
     constructor() {
     }
