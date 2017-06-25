@@ -9,6 +9,9 @@ export class WebService {
     private _options: RequestOptions;
 
     constructor(private _http: Http) {
+        this._token = localStorage.getItem('token');
+        console.log('Restored token ' + this._token);
+        this.updateOptions();
     }
 
     private updateOptions() {
@@ -16,12 +19,17 @@ export class WebService {
            'Content-Type': 'application/json'
         });
         if (this.isAuthenticated()) {
-            headers.append('Authorization', 'Token: ' + this._token);
+            headers.append('Authorization', 'Token ' + this._token);
         }
         this._options = new RequestOptions({
             headers: headers,
             withCredentials: true
         });
+    }
+
+    private logRequest(path) {
+        console.log('Request to path ' + path + '. With options:');
+        console.log(this._options);
     }
 
     isAuthenticated(): boolean {
@@ -30,11 +38,15 @@ export class WebService {
 
     setToken(token: string) {
         this._token = token;
+        localStorage.setItem('token', this._token);
+        console.log('Saved token ' + this._token);
         this.updateOptions();
     }
 
     getRepositoryList() {
-        this._http.get(this._baseUrl + '/repository/list/', this._options).subscribe(response => {
+        let path = '/repository/list/';
+        this.logRequest(path);
+        this._http.get(this._baseUrl + path, this._options).subscribe(response => {
             console.log(response);
         });
     }

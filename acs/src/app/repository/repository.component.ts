@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {WebService} from "../web.service";
 
 @Component({
     selector: 'app-repository',
@@ -7,10 +8,11 @@ import {Component, OnInit} from '@angular/core';
 })
 export class RepositoryComponent implements OnInit {
 
-    constructor() {
+    constructor(private _webService: WebService) {
     }
 
     ngOnInit() {
+        this._webService.getRepositoryList();
     }
 
 }
