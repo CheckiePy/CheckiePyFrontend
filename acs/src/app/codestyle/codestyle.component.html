@@ -4,6 +4,9 @@
             <mdl-list-item-primary-content>
                 {{codeStyle.name}}
             </mdl-list-item-primary-content>
+            <mdl-list-item-secondary-action>
+                <mdl-icon (click)="deleteCodeStyle(codeStyle.id)" mdl-list-item-icon>delete</mdl-icon>
+            </mdl-list-item-secondary-action>
         </mdl-list-item>
     </ng-container>
 </mdl-list>

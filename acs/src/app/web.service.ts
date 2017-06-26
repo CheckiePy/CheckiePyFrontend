@@ -65,4 +65,14 @@ export class WebService {
             return r;
         });
     }
+
+    deleteCodeStyle(id) {
+        let path = '/code_style/delete/';
+        this.logRequest(path);
+        return this._http.post(this._baseUrl + path, {'id': id}, this._options).toPromise().then(response => {
+            let r = response.json() as ResponseModel<number>;
+            console.log(r);
+            return r;
+        });
+    }
 }

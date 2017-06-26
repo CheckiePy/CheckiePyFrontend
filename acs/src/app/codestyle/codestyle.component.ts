@@ -25,4 +25,12 @@ export class CodeStyleComponent implements OnInit {
     addCodeStyle() {
         alert('This is a simple Alert');
     }
+
+    deleteCodeStyle(id) {
+        this._webService.deleteCodeStyle(id).then(response => {
+           if (response.detail == null) {
+               this.codeStyles = this.codeStyles.filter(cs => cs.id != response.result);
+           }
+        });
+    }
 }
