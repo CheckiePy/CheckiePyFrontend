@@ -1,5 +1,8 @@
 import {Injectable} from '@angular/core';
 import {RequestOptions, Http, Headers} from "@angular/http";
+import {ResponseModel, RepositoryModel} from "./app.models";
+
+import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class WebService {
@@ -43,11 +46,13 @@ export class WebService {
         this.updateOptions();
     }
 
-    getRepositoryList() {
+    getRepositoryList(): Promise<ResponseModel<RepositoryModel[]>> {
         let path = '/repository/list/';
         this.logRequest(path);
-        this._http.get(this._baseUrl + path, this._options).subscribe(response => {
-            console.log(response);
+        return this._http.get(this._baseUrl + path, this._options).toPromise().then(response => {
+            let r = response.json() as ResponseModel<RepositoryModel[]>;
+            console.log(r);
+            return r;
         });
     }
 }

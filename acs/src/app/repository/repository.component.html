@@ -1,30 +1,14 @@
 <mdl-list>
-    <mdl-list-item>
-        <mdl-list-item-primary-content>
-            Bryan Cranston
-        </mdl-list-item-primary-content>
-        <mdl-list-item-secondary-action>
-            <button mdl-button mdl-colored="primary">
-                Activate
-            </button>
-        </mdl-list-item-secondary-action>
-    </mdl-list-item>
-    <mdl-list-item>
-        <mdl-list-item-primary-content>
-            <mdl-icon mdl-list-item-avatar>person</mdl-icon>
-            Aaron Paul
-        </mdl-list-item-primary-content>
-        <mdl-list-item-secondary-action>
-            <mdl-radio ngModel="false" mdl-ripple></mdl-radio>
-        </mdl-list-item-secondary-action>
-    </mdl-list-item>
-    <mdl-list-item>
-        <mdl-list-item-primary-content>
-            <mdl-icon mdl-list-item-avatar>person</mdl-icon>
-            Bob Odenkirk
-        </mdl-list-item-primary-content>
-        <mdl-list-item-secondary-action>
-            <mdl-switch mdl-ripple></mdl-switch>
-        </mdl-list-item-secondary-action>
-    </mdl-list-item>
+    <ng-container *ngFor="let repository of repositories">
+        <mdl-list-item>
+            <mdl-list-item-primary-content>
+                {{repository.name}}
+            </mdl-list-item-primary-content>
+            <mdl-list-item-secondary-action>
+                <button mdl-button mdl-colored="primary">
+                    Activate
+                </button>
+            </mdl-list-item-secondary-action>
+        </mdl-list-item>
+    </ng-container>
 </mdl-list>
