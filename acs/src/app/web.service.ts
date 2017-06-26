@@ -75,4 +75,15 @@ export class WebService {
             return r;
         });
     }
+
+    createCodeStyle(name, repository) {
+        let path = '/code_style/create/';
+        let body = {'name': name, 'repository': repository};
+        this.logRequest(path);
+        return this._http.post(this._baseUrl + path, body, this._options).toPromise().then(response => {
+            let r = response.json() as ResponseModel<CodeStyleModel>;
+            console.log(r);
+            return r;
+        });
+    }
 }

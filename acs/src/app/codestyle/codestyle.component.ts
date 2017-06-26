@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {WebService} from "../web.service";
 import {CodeStyleModel} from "../app.models";
+import {MdlDialogService} from "@angular-mdl/core";
+import {AddCodeStyleDialogComponent} from "../addcodestyledialog/addcodestyledialog.component";
 
 @Component({
     selector: 'app-codestyle',
@@ -11,7 +13,7 @@ export class CodeStyleComponent implements OnInit {
 
     codeStyles: CodeStyleModel[];
 
-    constructor(private _webService: WebService) {
+    constructor(private _webService: WebService, private _dialogService: MdlDialogService) {
     }
 
     ngOnInit() {
@@ -22,8 +24,11 @@ export class CodeStyleComponent implements OnInit {
         });
     }
 
-    addCodeStyle() {
-        alert('This is a simple Alert');
+    createCodeStyle() {
+        let addCodeStyleDialog = this._dialogService.showCustomDialog({
+            component: AddCodeStyleDialogComponent,
+            isModal: true
+        });
     }
 
     deleteCodeStyle(id) {

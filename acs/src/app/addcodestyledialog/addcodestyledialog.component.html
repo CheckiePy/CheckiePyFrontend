@@ -1,0 +1,12 @@
+<form [formGroup]="form">
+    <h4 class="mdl-dialog__title">Add code style</h4>
+    <div class="mdl-dialog__content">
+        <mdl-textfield  type="text" label="Name" formControlName="name" floating-label></mdl-textfield>
+        <br/>
+        <mdl-textfield type="text" label="Repository" formControlName="repository" floating-label></mdl-textfield>
+    </div>
+    <div class="mdl-dialog__actions">
+        <button type="button" mdl-button (click)="cancel()" mdl-button-type="raised">Cancel</button>
+        <button type="button" mdl-button (click)="addCodeStyle()" [disabled]="!form.valid" mdl-button-type="raised" mdl-colored="primary" mdl-ripple>Save</button>
+    </div>
+</form>
