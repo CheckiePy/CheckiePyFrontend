@@ -8,3 +8,9 @@ export class RepositoryModel {
     name: string;
     isConnected: boolean;
 }
+
+export class CodeStyleModel {
+    id: number;
+    name: string;
+    repository: string;
+}

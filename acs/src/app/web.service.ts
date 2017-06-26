@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {RequestOptions, Http, Headers} from "@angular/http";
-import {ResponseModel, RepositoryModel} from "./app.models";
+import {ResponseModel, RepositoryModel, CodeStyleModel} from "./app.models";
 
 import 'rxjs/add/operator/toPromise';
 
@@ -51,6 +51,16 @@ export class WebService {
         this.logRequest(path);
         return this._http.get(this._baseUrl + path, this._options).toPromise().then(response => {
             let r = response.json() as ResponseModel<RepositoryModel[]>;
+            console.log(r);
+            return r;
+        });
+    }
+
+    getCodeStyleList(): Promise<ResponseModel<CodeStyleModel[]>> {
+        let path = '/code_style/list/';
+        this.logRequest(path);
+        return this._http.get(this._baseUrl + path, this._options).toPromise().then(response => {
+            let r = response.json() as ResponseModel<CodeStyleModel[]>;
             console.log(r);
             return r;
         });

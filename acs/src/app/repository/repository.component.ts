@@ -18,7 +18,7 @@ export class RepositoryComponent implements OnInit {
         this._webService.getRepositoryList().then(response => {
             // Todo: handle errors
             this.repositories = response.result;
-            console.log('Repositories was set');
+            console.log('Repositories were set');
         });
     }
 
