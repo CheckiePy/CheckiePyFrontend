@@ -50,7 +50,12 @@ export class WebService {
         let path = '/repository/list/';
         this.logRequest(path);
         return this._http.get(this._baseUrl + path, this._options).toPromise().then(response => {
-            let r = response.json() as ResponseModel<RepositoryModel[]>;
+            let repositories: RepositoryModel[] = [];
+            let objects = response.json() as object[];
+            for (let obj of objects['result']) {
+                repositories.push(new RepositoryModel(obj['id'], obj['name'], obj['is_connected']));
+            }
+            let r = new ResponseModel<RepositoryModel[]>(repositories);
             console.log(r);
             return r;
         });
@@ -92,6 +97,16 @@ export class WebService {
         let body = {'repository': repositoryId, 'code_style': codeStyleId};
         this.logRequest(path);
         return this._http.post(this._baseUrl + path, body, this._options).toPromise().then(response => {
+            let r = response.json() as ResponseModel<number>;
+            console.log(r);
+            return r;
+        });
+    }
+
+    deleteRepositoryConnection(repositoryId) {
+        let path = '/repository/disconnect/';
+        this.logRequest(path);
+        return this._http.post(this._baseUrl + path, {'id': repositoryId}, this._options).toPromise().then(response => {
             let r = response.json() as ResponseModel<number>;
             console.log(r);
             return r;

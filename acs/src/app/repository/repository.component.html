@@ -8,8 +8,11 @@
                 {{repository.name}}
             </mdl-list-item-primary-content>
             <mdl-list-item-secondary-action>
-                <button (click)="connectRepository(repository.id)" mdl-button mdl-colored="primary">
+                <button (click)="connectRepository(repository.id)" *ngIf="!repository.isConnected" mdl-button mdl-colored="primary">
                     Connect
+                </button>
+                <button (click)="disconnectRepository(repository.id)" *ngIf="repository.isConnected" mdl-button mdl-colored="primary">
+                    Disconnect
                 </button>
             </mdl-list-item-secondary-action>
         </mdl-list-item>

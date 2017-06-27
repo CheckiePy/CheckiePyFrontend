@@ -56,4 +56,15 @@ export class RepositoryComponent implements OnInit {
         });
     }
 
+    disconnectRepository(repositoryId) {
+        this._webService.deleteRepositoryConnection(repositoryId).then(response => {
+            if (response.detail == null) {
+                let repository = this.repositories.filter(r => r.id == response.result).pop();
+                if (repository != null) {
+                    repository.isConnected = false;
+                }
+            }
+        });
+    }
+
 }
