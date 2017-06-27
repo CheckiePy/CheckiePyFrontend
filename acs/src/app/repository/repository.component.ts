@@ -50,4 +50,10 @@ export class RepositoryComponent implements OnInit {
         });
     }
 
+    refreshRepositoryList() {
+        this._webService.updateRepositoryList().then(response => {
+            console.log('[RepositoryComponent] Update repository request was sent');
+        });
+    }
+
 }

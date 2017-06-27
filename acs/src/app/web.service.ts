@@ -97,4 +97,14 @@ export class WebService {
             return r;
         });
     }
+
+    updateRepositoryList(): Promise<ResponseModel<string>> {
+        let path = '/repository/update/';
+        this.logRequest(path);
+        return this._http.post(this._baseUrl + path, '', this._options).toPromise().then(response => {
+            let r = response.json() as ResponseModel<string>;
+            console.log(r);
+            return r;
+        });
+    }
 }
