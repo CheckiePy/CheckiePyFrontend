@@ -107,4 +107,10 @@ export class WebService {
             return r;
         });
     }
+
+    logout() {
+        localStorage.removeItem('token');
+        this._token = null;
+        this.updateOptions();
+    }
 }

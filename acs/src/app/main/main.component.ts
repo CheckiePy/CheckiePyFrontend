@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {WebService} from "../web.service";
 
 @Component({
     selector: 'app-main',
@@ -7,13 +8,14 @@ import {Component, OnInit} from '@angular/core';
 })
 export class MainComponent implements OnInit {
 
-    constructor() {
+    constructor(private _webService: WebService) {
     }
 
     ngOnInit() {
     }
 
     logout() {
-        alert('Logout');
+        this._webService.logout();
+        window.location.reload();
     }
 }
