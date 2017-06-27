@@ -66,7 +66,7 @@ export class WebService {
         });
     }
 
-    deleteCodeStyle(id) {
+    deleteCodeStyle(id): Promise<ResponseModel<number>> {
         let path = '/code_style/delete/';
         this.logRequest(path);
         return this._http.post(this._baseUrl + path, {'id': id}, this._options).toPromise().then(response => {
@@ -76,12 +76,23 @@ export class WebService {
         });
     }
 
-    createCodeStyle(name, repository) {
+    createCodeStyle(name, repository): Promise<ResponseModel<CodeStyleModel>> {
         let path = '/code_style/create/';
         let body = {'name': name, 'repository': repository};
         this.logRequest(path);
         return this._http.post(this._baseUrl + path, body, this._options).toPromise().then(response => {
             let r = response.json() as ResponseModel<CodeStyleModel>;
+            console.log(r);
+            return r;
+        });
+    }
+
+    createRepositoryConnection(repositoryId, codeStyleId): Promise<ResponseModel<number>> {
+        let path = '/repository/connect/';
+        let body = {'repository': repositoryId, 'code_style': codeStyleId};
+        this.logRequest(path);
+        return this._http.post(this._baseUrl + path, body, this._options).toPromise().then(response => {
+            let r = response.json() as ResponseModel<number>;
             console.log(r);
             return r;
         });

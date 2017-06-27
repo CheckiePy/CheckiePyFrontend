@@ -5,8 +5,8 @@
                 {{repository.name}}
             </mdl-list-item-primary-content>
             <mdl-list-item-secondary-action>
-                <button mdl-button mdl-colored="primary">
-                    Activate
+                <button (click)="connectRepository(repository.id)" mdl-button mdl-colored="primary">
+                    Connect
                 </button>
             </mdl-list-item-secondary-action>
         </mdl-list-item>

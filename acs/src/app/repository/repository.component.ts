@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {WebService} from "../web.service";
-import {RepositoryModel} from "../app.models";
+import {RepositoryModel, CodeStyleModel} from "../app.models";
+import {MdlDialogService, IMdlDialogAction} from "@angular-mdl/core";
 
 @Component({
     selector: 'app-repository',
@@ -10,15 +11,42 @@ import {RepositoryModel} from "../app.models";
 export class RepositoryComponent implements OnInit {
 
     repositories: RepositoryModel[];
+    private _codeStyles: CodeStyleModel[];
 
-    constructor(private _webService: WebService) {
+    constructor(private _webService: WebService, private _dialogService: MdlDialogService) {
     }
 
     ngOnInit() {
+        // Todo: handle errors
         this._webService.getRepositoryList().then(response => {
-            // Todo: handle errors
             this.repositories = response.result;
-            console.log('Repositories were set');
+            console.log('[RepositoryComponent] Repositories were set');
+        });
+        this._webService.getCodeStyleList().then(response => {
+            this._codeStyles = response.result;
+            console.log('[RepositoryComponent] Code styles were set');
+        });
+    }
+
+    connectRepository(repositoryId) {
+        let actions = [];
+        for (let codeStyle of this._codeStyles) {
+            actions.push({
+                handler: () => {
+                    this._webService.createRepositoryConnection(repositoryId, codeStyle.id).then(response => {
+                        // Todo: change connect button appearance
+                    });
+                },
+                text: codeStyle.name,
+                isClosingAction: true
+            });
+        }
+        let dialog = this._dialogService.showDialog({
+            title: 'Select code style',
+            message: 'This code style will be used to check repository',
+            actions: actions as [IMdlDialogAction],
+            fullWidthAction: true,
+            isModal: false
         });
     }
 
