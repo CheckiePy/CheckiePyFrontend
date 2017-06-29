@@ -11,10 +11,8 @@
 	<meta name="Resource-type" content="Document" />
 
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
-
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.4/jquery.fullpage.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="../jquery.fullPage.css" />
+	<link rel="stylesheet" type="text/css" href="examples.css" />
 	<style>
 
 	/* Style for our header texts
@@ -30,7 +28,8 @@
 	/* Centered texts in each section
 	* --------------------------------------- */
 	.section{
-		text-align:center;
+			text-align:center;
+			padding:500px;
 	}
 
 
@@ -47,7 +46,7 @@
 	/* Defining each sectino background and styles
 	* --------------------------------------- */
 	#section0{
-		background-image: url(https://static.pexels.com/photos/7112/woman-typing-writing-windows.jpg);
+		background-image: url(one.jpeg);
 	}
 	#section0 h1{
 		top: 50%;
@@ -55,7 +54,7 @@
 		position: relative;
 	}
 	#section2{
-		background-image: url(https://static.pexels.com/photos/26750/pexels-photo-26750.jpg);
+		background-image: url(two.jpeg);
 		padding: 6% 0 0 0;
 	}
 	#section2 h1{
@@ -64,7 +63,7 @@
 		position: relative;
 	}
 	#section3{
-		background-image: url(https://static.pexels.com/photos/401107/pexels-photo-401107.jpeg);
+		background-image: url(three.jpeg);
 		padding: 6% 0 0 0;
 	}
 	#section3 h1{
@@ -80,7 +79,7 @@
 	
 	#slide2{
 		background-image: url(https://raw.githubusercontent.com/alvarotrigo/fullPage.js/master/examples/imgs/bg5.jpg);
-		padding: 6% 0 0 0;
+		padding: 60% 0 0 0;
 	}
 
 
@@ -97,8 +96,6 @@
 		</script>
 	<![endif]-->
 
-	
-
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$('#fullpage').fullpage({
@@ -107,7 +104,6 @@
 			});
 		});
 	</script>
-
 </head>
 <body>
 
