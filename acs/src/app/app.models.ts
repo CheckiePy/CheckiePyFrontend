@@ -40,6 +40,18 @@ export class CodeStyleModel {
 
 }
 
+export class RepositoryUpdateModel {
+
+    datetime: Date;
+    status: string;
+
+    constructor(datetime?: Date, status?: string) {
+        this.datetime = datetime;
+        this.status = status;
+    }
+
+}
+
 export class CalculationStatus {
     static started = 'S';
     static failed = 'F';

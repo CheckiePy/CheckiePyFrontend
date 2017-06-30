@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {RequestOptions, Http, Headers} from "@angular/http";
-import {ResponseModel, RepositoryModel, CodeStyleModel} from "./app.models";
+import {ResponseModel, RepositoryModel, CodeStyleModel, RepositoryUpdateModel} from "./app.models";
 
 import 'rxjs/add/operator/toPromise';
 
@@ -57,9 +57,10 @@ export class WebService {
                 repositories.push(new RepositoryModel(obj['id'], obj['name'], obj['is_connected']));
             }
             let r = new ResponseModel<RepositoryModel[]>(repositories);
+            r.status = response.status;
             console.log(r);
             return r;
-        });
+        }).catch(this.handleError);
     }
 
     getCodeStyleList(): Promise<ResponseModel<CodeStyleModel[]>> {
@@ -69,7 +70,7 @@ export class WebService {
             let r = response.json() as ResponseModel<CodeStyleModel[]>;
             console.log(r);
             return r;
-        });
+        }).catch(this.handleError);
     }
 
     deleteCodeStyle(id): Promise<ResponseModel<number>> {
@@ -79,7 +80,7 @@ export class WebService {
             let r = response.json() as ResponseModel<number>;
             console.log(r);
             return r;
-        });
+        }).catch(this.handleError);
     }
 
     createCodeStyle(name, repository): Promise<ResponseModel<CodeStyleModel>> {
@@ -103,7 +104,7 @@ export class WebService {
             r.status = response.status;
             console.log(r);
             return r;
-        });
+        }).catch(this.handleError);
     }
 
     deleteRepositoryConnection(repositoryId) {
@@ -113,7 +114,7 @@ export class WebService {
             let r = response.json() as ResponseModel<number>;
             console.log(r);
             return r;
-        });
+        }).catch(this.handleError);
     }
 
     updateRepositoryList(): Promise<ResponseModel<string>> {
@@ -121,9 +122,10 @@ export class WebService {
         this.logRequest(path);
         return this._http.post(this._baseUrl + path, '', this._options).toPromise().then(response => {
             let r = response.json() as ResponseModel<string>;
+            r.status = response.status;
             console.log(r);
             return r;
-        });
+        }).catch(this.handleError);
     }
 
     logout() {
@@ -146,7 +148,18 @@ export class WebService {
             }
             console.log(r);
             return r;
-        });
+        }).catch(this.handleError);
+    }
+
+    readLastRepositoryUpdate(): Promise<ResponseModel<RepositoryUpdateModel>> {
+        let path = '/repository/last_update/';
+        this.logRequest(path);
+        return this._http.get(this._baseUrl + path, this._options).toPromise().then(response => {
+            let r = response.json() as ResponseModel<RepositoryUpdateModel>;
+            r.status = response.status;
+            console.log(r);
+            return r;
+        }).catch(this.handleError);
     }
 
     private handleError(response) {

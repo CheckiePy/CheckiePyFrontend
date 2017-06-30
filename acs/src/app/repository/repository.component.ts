@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {WebService} from "../web.service";
-import {RepositoryModel, CodeStyleModel} from "../app.models";
+import {RepositoryModel, CodeStyleModel, CalculationStatus} from "../app.models";
 import {MdlDialogService, IMdlDialogAction} from "@angular-mdl/core";
 
 @Component({
@@ -11,17 +11,18 @@ import {MdlDialogService, IMdlDialogAction} from "@angular-mdl/core";
 export class RepositoryComponent implements OnInit {
 
     repositories: RepositoryModel[];
+    hideRepositories = false;
+    showLoader = false;
     private _codeStyles: CodeStyleModel[];
 
     constructor(private _webService: WebService, private _dialogService: MdlDialogService) {
     }
 
     ngOnInit() {
+        this.loadRepositoryList();
+
         // Todo: handle errors
-        this._webService.getRepositoryList().then(response => {
-            this.repositories = response.result;
-            console.log('[RepositoryComponent] Repositories were set');
-        });
+        // Todo: get code styles on dialog open
         this._webService.getCodeStyleList().then(response => {
             this._codeStyles = response.result;
             console.log('[RepositoryComponent] Code styles were set');
@@ -52,7 +53,50 @@ export class RepositoryComponent implements OnInit {
 
     refreshRepositoryList() {
         this._webService.updateRepositoryList().then(response => {
-            console.log('[RepositoryComponent] Update repository request was sent');
+            if (response.status == 200) {
+                console.log('[RepositoryComponent] Update repository request was successfully sent');
+                this.hideRepositories = true;
+                this.showLoader = true;
+                this.pollRepositoryUpdateStatus();
+            } else {
+                this.showDialogWithMessage('Cannot refresh repository list. Error code: ' + response.status);
+            }
+        });
+    }
+
+    private loadRepositoryList() {
+        this._webService.getRepositoryList().then(response => {
+            if (response.status == 200) {
+                this.repositories = response.result;
+                console.log('[RepositoryComponent] Repositories were set');
+            } else {
+                this.showDialogWithMessage('Cannot refresh repository list. Error code: ' + response.status);
+                this.showLoader = false;
+                this.hideRepositories = false;
+            }
+        });
+    }
+
+    private pollRepositoryUpdateStatus() {
+        this._webService.readLastRepositoryUpdate().then(response => {
+            if (response.status == 200) {
+                if (response.result.status == CalculationStatus.completed) {
+                    this.loadRepositoryList();
+                    this.showLoader = false;
+                    this.hideRepositories = false;
+                } else if (response.result.status == CalculationStatus.failed) {
+                    this.showDialogWithMessage('Repository list refreshing failed. Try again later');
+                    this.showLoader = false;
+                    this.hideRepositories = false;
+                } else if (response.result.status == CalculationStatus.started) {
+                    setTimeout(() => { this.pollRepositoryUpdateStatus(); }, 1000);
+                    console.log('[RepositoryComponent] Timeout was set');
+                }
+            } else {
+                this.showDialogWithMessage('Cannot refresh repository list. Error code: ' + response.status);
+                this.showLoader = false;
+                this.hideRepositories = false;
+            }
         });
     }
 
@@ -65,6 +109,10 @@ export class RepositoryComponent implements OnInit {
                 }
             }
         });
+    }
+
+    private showDialogWithMessage(message) {
+        this._dialogService.alert(message);
     }
 
 }

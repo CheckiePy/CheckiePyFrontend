@@ -1,4 +1,5 @@
-<mdl-list>
+<div class="loader" *ngIf="showLoader"></div>
+<mdl-list *ngIf="!hideRepositories">
     <ng-container *ngFor="let repository of repositories">
         <mdl-list-item>
             <mdl-list-item-primary-content>
