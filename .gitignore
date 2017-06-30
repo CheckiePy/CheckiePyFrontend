@@ -40,3 +40,9 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+# Dist
+acs/dist
+
+# Lock
+acs/package-lock.json

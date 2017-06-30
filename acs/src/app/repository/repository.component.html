@@ -1,7 +1,4 @@
 <mdl-list>
-    <button (click)="refreshRepositoryList()" mdl-button mdl-button-type="raised" mdl-colored="accent">
-        Refresh
-    </button>
     <ng-container *ngFor="let repository of repositories">
         <mdl-list-item>
             <mdl-list-item-primary-content>
@@ -18,3 +15,8 @@
         </mdl-list-item>
     </ng-container>
 </mdl-list>
+<div class="flt-btn">
+    <a (click)="refreshRepositoryList()" mdl-button  mdl-button-type="fab" mdl-colored="accent" mdl-ripple>
+        <mdl-icon>refresh</mdl-icon>
+    </a>
+</div>

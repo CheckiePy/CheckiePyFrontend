@@ -17,3 +17,9 @@
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
+
+.flt-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}

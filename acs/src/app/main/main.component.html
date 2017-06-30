@@ -7,12 +7,12 @@
                 <!-- Navigation. We hide it in small screens. -->
                 <nav class="mdl-navigation">
                     <a routerLink="" class="mdl-navigation__link">Home</a>
-                    <a routerLink="settings" class="mdl-navigation__link">Settings</a>
+                    <!--<a routerLink="settings" class="mdl-navigation__link">Settings</a>-->
                     <a (click)="logout()" class="mdl-navigation__link">Logout</a>
                 </nav>
             </mdl-layout-header-row>
         </mdl-layout-header>
-        <mdl-layout-content>
+        <mdl-layout-content style="padding: 20px;">
             <!-- Your content goes here -->
             <router-outlet></router-outlet>
         </mdl-layout-content>

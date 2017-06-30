@@ -38,8 +38,8 @@ import {AddCodeStyleDialogComponent} from './addcodestyledialog/addcodestyledial
         MdlModule,
         RouterModule.forRoot([
             {path: '', component: TabsComponent},
-            {path: 'settings', component: SettingsComponent},
             // Todo
+            //{path: 'settings', component: SettingsComponent},
             //{path: 'codestyle', component: CodeStyleDetailComponent},
             //{path: 'codestyle/:id', component: CodeStyleDetailComponent}
         ])
