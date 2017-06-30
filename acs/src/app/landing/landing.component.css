@@ -28,7 +28,7 @@ h1{
 /* Defining each sectino background and styles
 * --------------------------------------- */
 #section0{
-    background-image: url(/assets/images/one.jpeg);
+    background-image: url(/assets/images/one.jpg);
 }
 #section0 h1{
     top: 50%;
@@ -36,7 +36,7 @@ h1{
     position: relative;
 }
 #section2{
-    background-image: url(/assets/images/two.jpeg);
+    background-image: url(/assets/images/two.jpg);
     padding: 6% 0 0 0;
 }
 #section2 h1{
@@ -45,7 +45,7 @@ h1{
     position: relative;
 }
 #section3{
-    background-image: url(/assets/images/three.jpeg);
+    background-image: url(/assets/images/three.jpg);
     padding: 6% 0 0 0;
 }
 #section3 h1{
