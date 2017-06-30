@@ -7,8 +7,8 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class WebService {
 
-    //private _baseUrl = 'http://127.0.0.1:8000/api';
-    private _baseUrl = '/api';
+    private _baseUrl = 'http://127.0.0.1:8000/api';
+    //private _baseUrl = '/api';
     private _token: string;
     private _options: RequestOptions;
 
@@ -88,9 +88,10 @@ export class WebService {
         this.logRequest(path);
         return this._http.post(this._baseUrl + path, body, this._options).toPromise().then(response => {
             let r = response.json() as ResponseModel<CodeStyleModel>;
+            r.status = response.status;
             console.log(r);
             return r;
-        });
+        }).catch(this.handleError);
     }
 
     createRepositoryConnection(repositoryId, codeStyleId): Promise<ResponseModel<number>> {
@@ -99,6 +100,7 @@ export class WebService {
         this.logRequest(path);
         return this._http.post(this._baseUrl + path, body, this._options).toPromise().then(response => {
             let r = response.json() as ResponseModel<number>;
+            r.status = response.status;
             console.log(r);
             return r;
         });
@@ -128,5 +130,27 @@ export class WebService {
         localStorage.removeItem('token');
         this._token = null;
         this.updateOptions();
+    }
+
+    readCodeStyle(id): Promise<ResponseModel<CodeStyleModel>> {
+        let path = '/code_style/read/' + id;
+        this.logRequest(path);
+        return this._http.get(this._baseUrl + path, this._options).toPromise().then(response => {
+            let obj = response.json() as object;
+            let r = new ResponseModel<CodeStyleModel>();
+            r.status = response.status;
+            r.detail = obj['detail'];
+            let result = obj['result'];
+            if (result != null) {
+                r.result = new CodeStyleModel(result['id'], result['name'], result['repository'], result['calc_status']);
+            }
+            console.log(r);
+            return r;
+        });
+    }
+
+    private handleError(response) {
+        // Don't take any action
+        return response;
     }
 }

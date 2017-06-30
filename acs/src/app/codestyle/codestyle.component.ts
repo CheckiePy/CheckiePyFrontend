@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {WebService} from "../web.service";
 import {CodeStyleModel} from "../app.models";
-import {MdlDialogService} from "@angular-mdl/core";
+import {MdlDialogReference, MdlDialogService} from "@angular-mdl/core";
 import {AddCodeStyleDialogComponent} from "../addcodestyledialog/addcodestyledialog.component";
 
 @Component({
@@ -27,7 +27,18 @@ export class CodeStyleComponent implements OnInit {
     createCodeStyle() {
         let addCodeStyleDialog = this._dialogService.showCustomDialog({
             component: AddCodeStyleDialogComponent,
-            isModal: true
+            isModal: true,
+            styles: {width: '400px'}
+        });
+        addCodeStyleDialog.subscribe((dialogReference: MdlDialogReference) => {
+            dialogReference.onHide().subscribe((codeStyle) => {
+                if (codeStyle != null) {
+                    this.codeStyles.push(codeStyle);
+                    console.log('[CodeStyleComponent] Code style returned from dialog was saved');
+                } else {
+                    console.log('[CodeStyleComponent] Dialog does not return code style');
+                }
+            });
         });
     }
 

@@ -2,10 +2,12 @@ export class ResponseModel<T> {
 
     result: T;
     detail: string;
+    status: number;
 
-    constructor(result?: T, detail?: string) {
+    constructor(result?: T, detail?: string, status?: number) {
         this.result = result;
         this.detail = detail;
+        this.status = status;
     }
 }
 
@@ -23,7 +25,23 @@ export class RepositoryModel {
 }
 
 export class CodeStyleModel {
+
     id: number;
     name: string;
     repository: string;
+    calculationStatus: string;
+
+    constructor(id?: number, name?: string, repository?: string, calculationStatus?: string) {
+        this.id = id;
+        this.name = name;
+        this.repository = repository;
+        this.calculationStatus = calculationStatus;
+    }
+
+}
+
+export class CalculationStatus {
+    static started = 'S';
+    static failed = 'F';
+    static completed = 'C';
 }
