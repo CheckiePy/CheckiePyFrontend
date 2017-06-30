@@ -1,125 +1,15 @@
-
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>FullScreen Backgrounds - fullPage.js</title>
-	<meta name="author" content="Alvaro Trigo Lopez" />
-	<meta name="description" content="fullPage full-screen backgrounds." />
-	<meta name="keywords"  content="fullpage,jquery,demo,screen,fullscreen,backgrounds,full-screen" />
-	<meta name="Resource-type" content="Document" />
-
-
-	<link rel="stylesheet" type="text/css" href="../jquery.fullPage.css" />
-	<link rel="stylesheet" type="text/css" href="examples.css" />
-	<style>
-
-	/* Style for our header texts
-	* --------------------------------------- */
-	h1{
-		font-size: 4em;
-		font-family: arial,helvetica;
-		color: #fff;
-		margin:0;
-		padding:0;
-	}
-
-	/* Centered texts in each section
-	* --------------------------------------- */
-	.section{
-			text-align:center;
-			padding:500px;
-	}
-
-
-	/* Backgrounds will cover all the section
-	* --------------------------------------- */
-	.section{
-		background-size: cover;
-	}
-
-	.slide{
-		background-size: cover;
-	}
-
-	/* Defining each sectino background and styles
-	* --------------------------------------- */
-	#section0{
-		background-image: url(one.jpeg);
-	}
-	#section0 h1{
-		top: 50%;
-		transform: translateY(-50%);
-		position: relative;
-	}
-	#section2{
-		background-image: url(two.jpeg);
-		padding: 6% 0 0 0;
-	}
-	#section2 h1{
-		top: 30%;
-		transform: translateY(-50%);
-		position: relative;
-	}
-	#section3{
-		background-image: url(three.jpeg);
-		padding: 6% 0 0 0;
-	}
-	#section3 h1{
-		top: 50%;
-		transform: translateY(-50%);
-		position: relative;	
-		color: #fff;
-	}
-
-
- 	/*Adding background for the slides
-	* --------------------------------------- */
-	
-	#slide2{
-		background-image: url(https://raw.githubusercontent.com/alvarotrigo/fullPage.js/master/examples/imgs/bg5.jpg);
-		padding: 60% 0 0 0;
-	}
-
-
-	/* Bottom menu
-	* --------------------------------------- */
-	#infoMenu li a {
-		color: #fff;
-	}
-	</style>
-
-	<!--[if IE]>
-		<script type="text/javascript">
-			 var console = { log: function() {} };
-		</script>
-	<![endif]-->
-
-	<script type="text/javascript">
-		$(document).ready(function() {
-			$('#fullpage').fullpage({
-				'verticalCentered': false,
-				navigation: true
-			});
-		});
-	</script>
-</head>
-<body>
-
-<ul id="menu">
-	<li data-menuanchor="firstPage"><a href="#section0">First slide</a></li>
-	<li data-menuanchor="secondPage"><a href="#section2">Second slide</a></li>
-	<li data-menuanchor="3rdPage"><a href="#section3">Third slide</a></li>
-	<li data-menuanchor="tryit"><a href="#qwe">Register</a></li>
-</ul>
-
 <div id="fullpage">
-	<div class="section " id="section0"><h1>NeuroCodeStyle <br /> You write, we check!</h1></div>
-	<div class="section" id="section2"><h1>Проверяйте pull-реквесты в один клик! <br /> Язык программирования Python3</h1></div>
-	<div class="section" id="section3"><h1>Быстрый и удобный способ наладить <br /> проверку код-стайла для open-source проектов</h1></div>
+    <div class="section" id="section0">
+        <h1>
+            NeuroCodeStyle
+            <br />
+            You write, we check!
+            <br />
+            <a href="/login/github/" mdl-button mdl-button-type="raised" mdl-colored="accent">
+                Sign In with GitHub
+            </a>
+        </h1>
+    </div>
+    <div class="section" id="section2"><h1>Проверяйте pull-реквесты в 1 клик! <br /> Язык программирования Python3</h1></div>
+    <div class="section" id="section3"><h1>Быстрый и удобный способ наладить <br /> проверку код-стайла для  open-source проектов</h1></div>
 </div>
-
-
-</body>
-</html>

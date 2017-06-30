@@ -131,7 +131,7 @@ p{
 	background-image: -webkit-gradient(linear,0 0,0 100%,from( #5bc0de),to( #2f96b4));
 	background-image: -webkit-linear-gradient(top, #5bc0de, #2f96b4);
 	background-image: -o-linear-gradient(top, #5bc0de, #2f96b4);
-	background-image: linear-gradient(top, #5bc0de, #2f96b4);
+	background-image: linear-gradient(to top, #5bc0de, #2f96b4);
 	background-repeat: repeat-x;
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#5bc0de', endColorstr='#2f96b4', GradientType=0);
 	border-color: #2f96b4 #2f96b4 #1f6377;
