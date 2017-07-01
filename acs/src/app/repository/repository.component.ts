@@ -20,6 +20,7 @@ export class RepositoryComponent implements OnInit {
 
     ngOnInit() {
         this.loadRepositoryList();
+        this.repositories = [new RepositoryModel(1,"52",false)]
 
         // Todo: handle errors
         // Todo: get code styles on dialog open
