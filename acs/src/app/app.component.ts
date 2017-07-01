@@ -25,6 +25,7 @@ export class AppComponent implements OnInit {
                     console.log('Token was set');
                 }
                 this.isAuthenticated = this._webService.isAuthenticated();
+                //this.isAuthenticated = true;
                 this._router.navigate(['']);
             }
         });
