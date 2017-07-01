@@ -35,7 +35,9 @@ export class RepositoryComponent implements OnInit {
             actions.push({
                 handler: () => {
                     this._webService.createRepositoryConnection(repositoryId, codeStyle.id).then(response => {
-                        // Todo: change connect button appearance
+                        // Todo: handle async
+                        let repository = this.repositories.find(r => r.id == repositoryId);
+                        repository.isConnected = true;
                     });
                 },
                 text: codeStyle.name,
