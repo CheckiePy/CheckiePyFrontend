@@ -20,7 +20,7 @@
 
 .flt-btn {
     position: fixed;
-    bottom: 110px;
+    bottom: 70px;
     right: 20px;
 }
 
@@ -28,9 +28,9 @@ footer {
     background-color: #424242;
     color: #828282;
     text-align: center;
-    height: 70px;
+    height: 50px;
     width: 100%;
-    padding-top: 30px;
+    padding-top: 10px;
     bottom: 0;
     position: fixed;
 }
