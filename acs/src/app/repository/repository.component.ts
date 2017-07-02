@@ -19,8 +19,8 @@ export class RepositoryComponent implements OnInit {
     }
 
     ngOnInit() {
-        //this.loadRepositoryList();
-        this.repositories = [new RepositoryModel(12, "fdsfsdf", false)]
+        this.loadRepositoryList();
+        //this.repositories = [new RepositoryModel(12, "fdsfsdf", false)]
     }
 
     connectRepository(repositoryId) {
