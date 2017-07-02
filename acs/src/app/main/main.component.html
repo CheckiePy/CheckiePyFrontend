@@ -3,20 +3,29 @@
         <mdl-layout-header>
             <mdl-layout-header-row>
                 <mdl-layout-title>
-                    acsproj.
+                    <img src="assets/images/logo_header.png" height="16px" style="margin-right: 3px;">acsproj.
                 </mdl-layout-title>
                 <mdl-layout-spacer></mdl-layout-spacer>
                 <!-- Navigation. We hide it in small screens. -->
                 <nav class="mdl-navigation">
-                    <a routerLink="" class="mdl-navigation__link">Home</a>
+                    <!--<a routerLink="" class="mdl-navigation__link">Home</a>-->
                     <!--<a routerLink="settings" class="mdl-navigation__link">Settings</a>-->
                     <a (click)="logout()" class="mdl-navigation__link">Logout</a>
                 </nav>
             </mdl-layout-header-row>
         </mdl-layout-header>
-        <mdl-layout-content style="padding: 20px;">
+        <mdl-layout-content>
             <!-- Your content goes here -->
-            <router-outlet></router-outlet>
+            <router-outlet style="padding: 20px;"></router-outlet>
+            <footer>
+                Developed by acsproj team
+                <br />
+                <span (click)="openGitHub()">
+                    <img src="assets/images/github.png" height="20px" style="margin-right: 2px;">
+                    GitHub
+                </span>
+            </footer>
         </mdl-layout-content>
     </mdl-layout>
 </div>
+

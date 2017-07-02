@@ -2,7 +2,7 @@
 
 .loader {
     border: 5px solid #f3f3f3; /* Light grey */
-    border-top: 5px solid #3498db; /* Blue */
+    border-top: 5px solid #03a9f4; /* Blue */
     border-radius: 50%;
     width: 30px;
     height: 30px;
@@ -20,6 +20,17 @@
 
 .flt-btn {
     position: fixed;
-    bottom: 20px;
+    bottom: 110px;
     right: 20px;
+}
+
+footer {
+    background-color: #424242;
+    color: #828282;
+    text-align: center;
+    height: 70px;
+    width: 100%;
+    padding-top: 30px;
+    bottom: 0;
+    position: fixed;
 }

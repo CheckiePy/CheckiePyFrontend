@@ -14,6 +14,10 @@ export class MainComponent implements OnInit {
     ngOnInit() {
     }
 
+    openGitHub() {
+        window.open('https://github.com/acsproj');
+    }
+
     logout() {
         this._webService.logout();
         window.location.reload();
