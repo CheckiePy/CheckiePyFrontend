@@ -20,16 +20,23 @@ export class RepositoryComponent implements OnInit {
 
     ngOnInit() {
         this.loadRepositoryList();
-
-        // Todo: handle errors
-        // Todo: get code styles on dialog open
-        this._webService.getCodeStyleList().then(response => {
-            this._codeStyles = response.result;
-            console.log('[RepositoryComponent] Code styles were set');
-        });
     }
 
     connectRepository(repositoryId) {
+        this._webService.getCodeStyleList().then(response => {
+            if (response.status == 200) {
+                this._codeStyles = response.result;
+                console.log('[RepositoryComponent] Code styles were set');
+            }
+            if (this._codeStyles == null || this._codeStyles.length == 0) {
+                this.showDialogWithMessage('You need at least one code style to create connection');
+            } else {
+                this.showConnectionDialog(repositoryId)
+            }
+        });
+    }
+
+    private showConnectionDialog(repositoryId) {
         let actions = [];
         for (let codeStyle of this._codeStyles) {
             actions.push({

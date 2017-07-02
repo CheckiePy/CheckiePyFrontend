@@ -68,6 +68,7 @@ export class WebService {
         this.logRequest(path);
         return this._http.get(this._baseUrl + path, this._options).toPromise().then(response => {
             let r = response.json() as ResponseModel<CodeStyleModel[]>;
+            r.status = response.status;
             console.log(r);
             return r;
         }).catch(this.handleError);
