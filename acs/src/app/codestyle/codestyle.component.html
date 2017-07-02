@@ -1,4 +1,4 @@
-<mdl-list>
+<mdl-list class="list">
     <div *ngIf="!codeStyles" class="loader"></div>
     <div align=center style="margin: 20px; font-size: 20px" *ngIf="!codeStyles || codeStyles.length == 0">You have no code styles</div>
     <ng-container *ngFor="let codeStyle of codeStyles">
