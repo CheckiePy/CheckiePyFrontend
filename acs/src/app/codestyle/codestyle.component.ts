@@ -3,6 +3,7 @@ import {WebService} from "../web.service";
 import {CodeStyleModel} from "../app.models";
 import {MdlDialogReference, MdlDialogService} from "@angular-mdl/core";
 import {AddCodeStyleDialogComponent} from "../addcodestyledialog/addcodestyledialog.component";
+import {Router} from "@angular/router";
 
 @Component({
     selector: 'app-codestyle',
@@ -13,7 +14,7 @@ export class CodeStyleComponent implements OnInit {
 
     codeStyles: CodeStyleModel[];
 
-    constructor(private _webService: WebService, private _dialogService: MdlDialogService) {
+    constructor(private _router: Router, private _webService: WebService, private _dialogService: MdlDialogService) {
     }
 
     ngOnInit() {
@@ -22,6 +23,10 @@ export class CodeStyleComponent implements OnInit {
             this.codeStyles = response.result;
             console.log('Code styles were set');
         });
+    }
+
+    openRepositories() {
+        this._router.navigate(['repository']);
     }
 
     createCodeStyle() {

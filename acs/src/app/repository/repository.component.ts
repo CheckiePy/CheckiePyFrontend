@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {WebService} from "../web.service";
 import {RepositoryModel, CodeStyleModel, CalculationStatus} from "../app.models";
 import {MdlDialogService, IMdlDialogAction} from "@angular-mdl/core";
+import {Router} from "@angular/router";
 
 @Component({
     selector: 'app-repository',
@@ -15,12 +16,16 @@ export class RepositoryComponent implements OnInit {
     showLoader = false;
     private _codeStyles: CodeStyleModel[];
 
-    constructor(private _webService: WebService, private _dialogService: MdlDialogService) {
+    constructor(private _router: Router, private _webService: WebService, private _dialogService: MdlDialogService) {
     }
 
     ngOnInit() {
         this.loadRepositoryList();
-        //this.repositories = [new RepositoryModel(12, "fdsfsdf", false)]
+    }
+
+    openCodeStyles() {
+        console.log("[RepositoryComponent] Open code styles clicked!");
+        this._router.navigate(['codestyle']);
     }
 
     connectRepository(repositoryId) {

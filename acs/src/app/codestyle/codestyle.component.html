@@ -1,19 +1,25 @@
-<mdl-list class="list">
-    <div *ngIf="!codeStyles" class="loader"></div>
-    <div align=center style="margin: 20px; font-size: 20px" *ngIf="!codeStyles || codeStyles.length == 0">You have no code styles</div>
-    <ng-container *ngFor="let codeStyle of codeStyles">
-        <mdl-list-item>
-            <mdl-list-item-primary-content>
-                {{codeStyle.name}}
-            </mdl-list-item-primary-content>
-            <mdl-list-item-secondary-action>
-                <mdl-icon (click)="deleteCodeStyle(codeStyle.id)" mdl-list-item-icon>delete</mdl-icon>
-            </mdl-list-item-secondary-action>
-        </mdl-list-item>
-    </ng-container>
-</mdl-list>
-<div class="flt-btn">
-    <a (click)="createCodeStyle()" mdl-button  mdl-button-type="fab" mdl-colored="accent" mdl-ripple>
-        <mdl-icon>add</mdl-icon>
-    </a>
-</div>
+<mdl-tabs mdl-ripple mdl-tab-active-index="0" style="margin-bottom: 150px;" (mdl-tab-active-changed)="openRepositories()">
+    <mdl-tab-panel mdl-tab-panel-title="Code styles">
+        <mdl-list class="list">
+            <div *ngIf="!codeStyles" class="loader"></div>
+            <div align=center style="margin: 20px; font-size: 20px" *ngIf="!codeStyles || codeStyles.length == 0">You have no code styles</div>
+            <ng-container *ngFor="let codeStyle of codeStyles">
+                <mdl-list-item>
+                    <mdl-list-item-primary-content>
+                        {{codeStyle.name}}
+                    </mdl-list-item-primary-content>
+                    <mdl-list-item-secondary-action>
+                        <mdl-icon (click)="deleteCodeStyle(codeStyle.id)" mdl-list-item-icon>delete</mdl-icon>
+                    </mdl-list-item-secondary-action>
+                </mdl-list-item>
+            </ng-container>
+        </mdl-list>
+        <div class="flt-btn">
+            <a (click)="createCodeStyle()" mdl-button  mdl-button-type="fab" mdl-colored="accent" mdl-ripple>
+                <mdl-icon>add</mdl-icon>
+            </a>
+        </div>
+    </mdl-tab-panel>
+    <mdl-tab-panel mdl-tab-panel-title="Repositories">
+    </mdl-tab-panel>
+</mdl-tabs>

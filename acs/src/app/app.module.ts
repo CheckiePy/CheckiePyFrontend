@@ -13,7 +13,6 @@ import {MainComponent} from './main/main.component';
 import {CodeStyleComponent} from './codestyle/codestyle.component';
 import {RepositoryComponent} from './repository/repository.component';
 import {SettingsComponent} from './settings/settings.component';
-import {TabsComponent} from './tabs/tabs.component';
 import {CodeStyleDetailComponent} from './codestyledetail/codestyledetail.component';
 import {AddCodeStyleDialogComponent} from './addcodestyledialog/addcodestyledialog.component';
 
@@ -25,7 +24,6 @@ import {AddCodeStyleDialogComponent} from './addcodestyledialog/addcodestyledial
         CodeStyleComponent,
         RepositoryComponent,
         SettingsComponent,
-        TabsComponent,
         CodeStyleDetailComponent,
         AddCodeStyleDialogComponent
     ],
@@ -37,10 +35,10 @@ import {AddCodeStyleDialogComponent} from './addcodestyledialog/addcodestyledial
         HttpModule,
         MdlModule,
         RouterModule.forRoot([
-            {path: '', component: TabsComponent},
-            // Todo
-            //{path: 'settings', component: SettingsComponent},
-            //{path: 'codestyle', component: CodeStyleDetailComponent},
+            {path: 'repository', component: RepositoryComponent},
+            {path: 'codestyle', component: CodeStyleComponent},
+            {path: 'settings', component: SettingsComponent},
+            // TODO
             //{path: 'codestyle/:id', component: CodeStyleDetailComponent}
         ])
     ],
