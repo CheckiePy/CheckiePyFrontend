@@ -4,6 +4,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 import {MdlModule} from '@angular-mdl/core';
 import {RouterModule} from '@angular/router';
+import {NgxChartsModule} from '@swimlane/ngx-charts';
 
 import {WebService} from './web.service';
 
@@ -15,6 +16,7 @@ import {RepositoryComponent} from './repository/repository.component';
 import {SettingsComponent} from './settings/settings.component';
 import {CodeStyleDetailComponent} from './codestyledetail/codestyledetail.component';
 import {AddCodeStyleDialogComponent} from './addcodestyledialog/addcodestyledialog.component';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
     declarations: [
@@ -34,12 +36,14 @@ import {AddCodeStyleDialogComponent} from './addcodestyledialog/addcodestyledial
         ReactiveFormsModule,
         HttpModule,
         MdlModule,
+        NgxChartsModule,
+        BrowserAnimationsModule,
         RouterModule.forRoot([
+            {path: '', redirectTo: '/codestyle', pathMatch: 'full'},
             {path: 'repository', component: RepositoryComponent},
             {path: 'codestyle', component: CodeStyleComponent},
             {path: 'settings', component: SettingsComponent},
-            // TODO
-            //{path: 'codestyle/:id', component: CodeStyleDetailComponent}
+            {path: 'codestyle/:id', component: CodeStyleDetailComponent}
         ])
     ],
     providers: [WebService],

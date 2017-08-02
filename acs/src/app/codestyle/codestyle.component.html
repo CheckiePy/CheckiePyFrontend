@@ -6,7 +6,7 @@
             <ng-container *ngFor="let codeStyle of codeStyles">
                 <mdl-list-item>
                     <mdl-list-item-primary-content>
-                        {{codeStyle.name}}
+                        <span routerLink="/codestyle/{{codeStyle.id}}">{{codeStyle.name}}</span>
                     </mdl-list-item-primary-content>
                     <mdl-list-item-secondary-action>
                         <mdl-icon (click)="deleteCodeStyle(codeStyle.id)" mdl-list-item-icon>delete</mdl-icon>
