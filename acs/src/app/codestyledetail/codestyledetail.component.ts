@@ -9,32 +9,34 @@ export class CodeStyleDetailComponent implements OnInit {
 
     single: any[] = [
         {
-            "name": "Germany",
-            "value": 8940000
+            "name": "36",
+            "value": 2
         },
         {
-            "name": "USA",
-            "value": 5000000
+            "name": "81",
+            "value": 1,
+        },
+        {
+            "name": "71",
+            "value": 1,
         }
     ];
 
-    multi: any[];
-
     view: any[] = [700, 400];
 
-    // options
     showXAxis = true;
     showYAxis = true;
     gradient = false;
     showLegend = true;
     showXAxisLabel = true;
-    xAxisLabel = 'Country';
+    xAxisLabel = 'File length';
     showYAxisLabel = true;
-    yAxisLabel = 'Population';
+    yAxisLabel = 'File count';
 
     colorScheme = {
         domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
     };
+
     constructor() {
     }
 
