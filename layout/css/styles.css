@@ -5,7 +5,7 @@
     position: fixed;
     top: 0;
     left: 0;
-    /*z-index: 999;*/
+    z-index: 999;
     background-color: white;
     -webkit-transition: height 0.3s;
     -moz-transition: height 0.3s;
@@ -37,7 +37,6 @@
 
 .header__a:hover {
     text-decoration: underline;
-    /*border-bottom: 1px solid #14dcaf;*/
 }
 
 .header__logo {
@@ -83,6 +82,74 @@
     height: 18px;
 }
 
-body {
-    height: 1024px;
+.slogan {
+    margin-top: 200px;
+    color: #14dcaf;
+    font-weight: 700;
+    font-size: 56px;
+    font-family: 'Muli', sans-serif;
+    font-style: italic;
+    text-align: center;
+}
+
+.button-promo {
+    color: white;
+    background-color: #14dcaf;
+    font-weight: 700;
+    font-size: 20px;
+    font-family: 'Muli', sans-serif;
+    text-align: center;
+    margin: 40px auto 0;
+    border: 1px solid #14dcaf;
+    border-radius: 8px;
+    height: 70px;
+    width: 300px;
+    line-height: 70px;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.button-promo:hover {
+    box-shadow: 0 2px 8px 0 lightgray;
+    cursor: pointer;
+}
+
+.footer {
+    position: absolute;
+    bottom: -160px;
+    left: 0;
+    height: 160px;
+    width: 100%;
+    background-color: rgba(216, 216, 216, 0.3);
+    text-align: center;
+}
+
+.footer__nav {
+    display: inline-block;
+    margin-top: 20px;
+}
+
+.footer__a {
+    color: #14dcaf;
+    font-weight: 300;
+    font-size: 20px;
+    font-family: 'Muli', sans-serif;
+    text-decoration: none;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.footer__a:hover {
+    text-decoration: underline;
+}
+
+.footer__copyright {
+    color: #868686;
+    font-weight: 200;
+    font-size: 14px;
+    font-family: 'Muli', sans-serif;
+    margin-top: 30px;
 }

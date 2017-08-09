@@ -1,7 +1,7 @@
 function init() {
     window.addEventListener('scroll', function(e){
         var distanceY = window.pageYOffset || document.documentElement.scrollTop,
-            shrinkOn = 300,
+            shrinkOn = 100,
             header = $('.header'),
             links = $('.header__a'),
             logo = $('.header__logo'),
