@@ -123,10 +123,6 @@ html, body {
     cursor: pointer;
 }
 
-.features {
-    text-align: center;
-}
-
 .footer {
     height: 160px;
     width: 100%;
@@ -161,11 +157,20 @@ html, body {
     margin-top: 30px;
 }
 
-#getstarted {
+.screen {
     min-height: 100%;
  }
 
-#features {
+.screen_image {
     padding-top: 60px;
-    min-height: 100%;
+    padding-bottom: 60px;
+    text-align: center;
+}
+
+.screen_not-full {
+    min-height: 0;
+}
+
+.screen__image {
+    max-width: 100%;
 }
