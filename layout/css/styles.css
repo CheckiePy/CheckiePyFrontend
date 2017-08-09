@@ -246,6 +246,11 @@ html, body {
     width: 40px;
     height: 40px;
     line-height: 38px;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
 }
 
 .pagination__circle:hover {
@@ -267,4 +272,28 @@ html, body {
 .pagination__circle_disabled:hover {
     box-shadow: none;
     cursor: default;
+}
+
+.button-float {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    color: white;
+    text-align: center;
+    line-height: 60px;
+    box-shadow: 0 2px 8px 0 lightgray;
+    background-color: #14dcaf;
+    border-radius: 30px;
+    width: 60px;
+    height: 60px;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.button-float:hover {
+    cursor: pointer;
+    box-shadow: 0 4px 8px 0 lightgray;
 }
