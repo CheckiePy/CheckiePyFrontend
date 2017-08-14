@@ -1,3 +1,15 @@
 <app-landing *ngIf="!isAuthenticated"></app-landing>
 <app-main *ngIf="isAuthenticated"></app-main>
 <dialog-outlet></dialog-outlet>
+<footer class="footer">
+    <nav class="footer__nav">
+        <a class="footer__a" href="">About</a>
+        <a class="footer__a" href="">Source Code</a>
+        <a class="footer__a" href="">FAQ</a>
+    </nav>
+    <div class="footer__copyright">
+        Copyright © 2017
+        <br>
+        Artem Ustimov, Marina Belyanova
+    </div>
+</footer>
