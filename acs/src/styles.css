@@ -316,3 +316,10 @@ html, body {
     100% { transform: rotate(360deg); }
 }
 
+.message-box {
+    text-align: center;
+    color: #868686;
+    font-weight: 300;
+    font-size: 20px;
+    font-family: 'Muli', sans-serif;
+}

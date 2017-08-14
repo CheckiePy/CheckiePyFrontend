@@ -1,25 +1,22 @@
-<mdl-tabs mdl-ripple mdl-tab-active-index="0" style="margin-bottom: 150px;" (mdl-tab-active-changed)="openRepositories()">
-    <mdl-tab-panel mdl-tab-panel-title="Code styles">
-        <mdl-list class="list">
-            <div *ngIf="!codeStyles" class="loader"></div>
-            <div align=center style="margin: 20px; font-size: 20px" *ngIf="!codeStyles || codeStyles.length == 0">You have no code styles</div>
-            <ng-container *ngFor="let codeStyle of codeStyles">
-                <mdl-list-item>
-                    <mdl-list-item-primary-content>
-                        <span routerLink="/codestyle/{{codeStyle.id}}">{{codeStyle.name}}</span>
-                    </mdl-list-item-primary-content>
-                    <mdl-list-item-secondary-action>
-                        <mdl-icon (click)="deleteCodeStyle(codeStyle.id)" mdl-list-item-icon>delete</mdl-icon>
-                    </mdl-list-item-secondary-action>
-                </mdl-list-item>
-            </ng-container>
-        </mdl-list>
-        <div class="flt-btn">
-            <a (click)="createCodeStyle()" mdl-button  mdl-button-type="fab" mdl-colored="accent" mdl-ripple>
-                <mdl-icon>add</mdl-icon>
-            </a>
+<div class="screen">
+    <div class="title">
+        Code styles
+    </div>
+    <div *ngIf="!codeStyles" class="loader"></div>
+    <div class="message-box" *ngIf="!codeStyles || codeStyles.length == 0">
+        You have no code styles
+    </div>
+    <ng-container *ngFor="let codeStyle of codeStyles">
+        <div class="card">
+            <span class="card__text" routerLink="/codestyle/{{codeStyle.id}}">
+                {{codeStyle.name}}
+            </span>
+            <div class="button-primary button-primary_card" (click)="deleteCodeStyle(codeStyle.id)">
+                Delete
+            </div>
         </div>
-    </mdl-tab-panel>
-    <mdl-tab-panel mdl-tab-panel-title="Repositories">
-    </mdl-tab-panel>
-</mdl-tabs>
+    </ng-container>
+</div>
+<div class="button-float" (click)="createCodeStyle()">
+    <i class="fa fa-plus fa-lg" aria-hidden="true"></i>
+</div>

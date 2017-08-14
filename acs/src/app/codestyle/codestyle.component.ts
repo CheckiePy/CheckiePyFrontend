@@ -25,10 +25,6 @@ export class CodeStyleComponent implements OnInit {
         });
     }
 
-    openRepositories() {
-        this._router.navigate(['repository']);
-    }
-
     createCodeStyle() {
         let addCodeStyleDialog = this._dialogService.showCustomDialog({
             component: AddCodeStyleDialogComponent,
