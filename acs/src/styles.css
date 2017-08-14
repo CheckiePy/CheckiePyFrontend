@@ -223,6 +223,16 @@ html, body {
     cursor: pointer;
 }
 
+.button-primary_negative {
+    color: #d8d8d8;
+    border: 2px solid #d8d8d8;
+}
+
+.button-primary_negative:hover {
+    color: white;
+    background-color: #d8d8d8;
+}
+
 .button-primary_card {
     display: inline-block;
     float: right;

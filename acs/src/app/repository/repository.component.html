@@ -1,30 +1,24 @@
-<mdl-tabs mdl-ripple mdl-tab-active-index="1" style="margin-bottom: 150px;" (mdl-tab-active-changed)="openCodeStyles()">
-    <mdl-tab-panel mdl-tab-panel-title="Code styles">
-    </mdl-tab-panel>
-    <mdl-tab-panel mdl-tab-panel-title="Repositories">
-        <div class="loader" *ngIf="showLoader"></div>
-        <mdl-list class="list" *ngIf="!hideRepositories">
-            <ng-container *ngFor="let repository of repositories">
-                <mdl-list-item>
-                    <mdl-list-item-primary-content>
-                        {{repository.name}}
-                    </mdl-list-item-primary-content>
-                    <mdl-list-item-secondary-action>
-                        <button (click)="connectRepository(repository.id)" *ngIf="!repository.isConnected" mdl-button mdl-colored="primary" >
-                            Connect
-                        </button>
-                        <button (click)="disconnectRepository(repository.id)" *ngIf="repository.isConnected" mdl-button mdl-colored="primary">
-                            Disconnect
-                        </button>
-                    </mdl-list-item-secondary-action>
-                </mdl-list-item>
-            </ng-container>
-        </mdl-list>
-        <div class="flt-btn">
-            <a (click)="refreshRepositoryList()" mdl-button  mdl-button-type="fab" mdl-colored="accent" mdl-ripple>
-                <mdl-icon>refresh</mdl-icon>
-            </a>
-        </div>
-    </mdl-tab-panel>
-</mdl-tabs>
-
+<div class="screen">
+    <div class="title">
+        Repositories
+    </div>
+    <div class="loader" *ngIf="showLoader"></div>
+    <div *ngIf="!hideRepositories">
+        <ng-container *ngFor="let repository of repositories">
+            <div class="card">
+                <span class="card__text">
+                    {{repository.name}}
+                </span>
+                <div class="button-primary button-primary_card" (click)="connectRepository(repository.id)" *ngIf="!repository.isConnected">
+                    Connect
+                </div>
+                <div class="button-primary button-primary_card button-primary_negative" (click)="disconnectRepository(repository.id)" *ngIf="repository.isConnected">
+                    Disconnect
+                </div>
+            </div>
+        </ng-container>
+    </div>
+</div>
+<div class="button-float" (click)="refreshRepositoryList()">
+    <i class="fa fa-refresh fa-lg" aria-hidden="true"></i>
+</div>

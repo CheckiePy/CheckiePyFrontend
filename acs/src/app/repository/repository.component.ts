@@ -23,11 +23,6 @@ export class RepositoryComponent implements OnInit {
         this.loadRepositoryList();
     }
 
-    openCodeStyles() {
-        console.log("[RepositoryComponent] Open code styles clicked!");
-        this._router.navigate(['codestyle']);
-    }
-
     connectRepository(repositoryId) {
         this._webService.getCodeStyleList().then(response => {
             if (response.status == 200) {
