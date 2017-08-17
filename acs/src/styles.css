@@ -379,7 +379,7 @@ html, body {
     padding: 25px 50px;
     border-radius: 16px;
     background: #fff;
-    box-shadow: 0 2px 8px 0 lightgray;
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.5);
 }
 
 .form-label {
@@ -403,4 +403,25 @@ html, body {
 .form-group_buttons {
     margin-top: 20px;
     text-align: right;
+}
+
+.hr {
+    border-color: rgba(216, 216, 216, 0.2);
+    border-width: 1px;
+}
+
+.list {
+    margin-top: 10px;
+}
+
+.list__item {
+    color: #14dcaf;
+    font-weight: 300;
+    font-size: 18px;
+    font-family: 'Muli', sans-serif;
+}
+
+.check {
+    float: right;
+    height: 25px;
 }
