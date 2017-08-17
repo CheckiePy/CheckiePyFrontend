@@ -194,12 +194,24 @@ html, body {
 }
 
 .card__text {
+    display: inline-block;
     margin-left: 20px;
     color: #14dcaf;
     font-weight: 300;
     font-size: 20px;
     font-family: 'Muli', sans-serif;
     line-height: 70px;
+}
+
+.card__text_detailed {
+    line-height: 30px;
+    margin-top: 8px;
+}
+
+.card__detail {
+    color: #868686;
+    font-size: 16px;
+    line-height: 20px;
 }
 
 .button-primary {
