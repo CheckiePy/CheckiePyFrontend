@@ -455,4 +455,5 @@ html, body {
 .check {
     float: right;
     height: 25px;
+    cursor: pointer;
 }

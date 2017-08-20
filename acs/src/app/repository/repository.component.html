@@ -22,3 +22,29 @@
 <div class="button-float" (click)="refreshRepositoryList()">
     <i class="fa fa-refresh fa-lg" aria-hidden="true"></i>
 </div>
+<div class="modal-dialog modal-dialog_visible" *ngIf="showModal">
+    <div class="modal-dialog__card">
+        <div class="message-box">
+            Select code style name
+        </div>
+        <!--<div class="form-group">-->
+            <!--<input class="form-input" type="text">-->
+        <!--</div>-->
+        {{error}}
+        <div class="list">
+            <hr class="hr">
+            <ng-container *ngFor="let codeStyle of codeStyles">
+                <div class="list__item">
+                    {{codeStyle.name}}
+                    <img class="check" src="/assets/images/check.png" *ngIf="!codeStyle.selected" (click)="selectCodeStyle(codeStyle.id)">
+                    <img class="check" src="/assets/images/check_active.png" *ngIf="codeStyle.selected" (click)="selectCodeStyle(codeStyle.id)">
+                </div>
+                <hr class="hr">
+            </ng-container>
+        </div>
+        <div class="form-group form-group_buttons">
+            <button class="button-primary button-primary_negative" (click)="closeModal()">Cancel</button>
+            <button class="button-primary button-primary_active button-primary_ok" (click)="createConnection()">OK</button>
+        </div>
+    </div>
+</div>
