@@ -17,6 +17,37 @@
         </div>
     </ng-container>
 </div>
-<div class="button-float" (click)="createCodeStyle()">
+<div class="button-float" (click)="openModal()">
     <i class="fa fa-plus fa-lg" aria-hidden="true"></i>
+</div>
+<div class="modal-dialog modal-dialog_visible" *ngIf="showModal">
+    <div class="modal-dialog__card">
+        <div class="message-box">
+            Enter repository URL and code style name
+        </div>
+        <form [formGroup]="form">
+            {{error}}
+            <div class="form-group">
+                <div class="form-label">
+                    <label>Repository</label>
+                </div>
+                <div>
+                    <input class="form-input" type="text" formControlName="repository">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="form-label">
+                    <label>Code style name</label>
+                </div>
+                <div>
+                    <input class="form-input" type="text" formControlName="name">
+                </div>
+            </div>
+            <!--<div class="loader" *ngIf="showLoader"></div>-->
+            <div class="form-group form-group_buttons">
+                <button class="button-primary button-primary_negative" (click)="closeModal()" [disabled]="disableControls">Cancel</button>
+                <button class="button-primary button-primary_active button-primary_ok" (click)="createCodeStyle()" [disabled]="disableControls || !form.valid">OK</button>
+            </div>
+        </form>
+    </div>
 </div>

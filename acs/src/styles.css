@@ -252,14 +252,31 @@ html, body {
     margin-left: 10px;
 }
 
+.button-primary_ok:disabled {
+    opacity: 0.5;
+    box-shadow: none;
+    cursor: default;
+}
+
 .button-primary_negative {
     color: #d8d8d8;
     border: 2px solid #d8d8d8;
+    background-color: white;
 }
 
 .button-primary_negative:hover {
     color: white;
     background-color: #d8d8d8;
+}
+
+.button-primary_negative:disabled {
+    opacity: 0.5;
+    cursor: default;
+}
+
+.button-primary_negative:disabled:hover {
+    color: #d8d8d8;
+    background-color: white;
 }
 
 .button-primary_card {
@@ -379,10 +396,12 @@ html, body {
     pointer-events: none;
 }
 
-.modal-dialog:target {
+.modal-dialog:target, .modal-dialog_visible {
     opacity: 1;
     pointer-events: auto;
 }
+
+
 
 .modal-dialog__card {
     width: 400px;
