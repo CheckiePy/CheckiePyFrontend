@@ -39,7 +39,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
         NgxChartsModule,
         BrowserAnimationsModule,
         RouterModule.forRoot([
-            {path: '', redirectTo: '/codestyle', pathMatch: 'full'},
+            {path: '', component: CodeStyleComponent},
             {path: 'repository', component: RepositoryComponent},
             {path: 'codestyle', component: CodeStyleComponent},
             {path: 'settings', component: SettingsComponent},

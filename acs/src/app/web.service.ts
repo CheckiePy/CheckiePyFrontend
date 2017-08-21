@@ -7,8 +7,8 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class WebService {
 
-    private _baseUrl = 'http://127.0.0.1:8000/api';
-    //private _baseUrl = '/api';
+    //private _baseUrl = 'http://127.0.0.1:8000/api';
+    private _baseUrl = '/api';
     private _token: string;
     private _options: RequestOptions;
 
