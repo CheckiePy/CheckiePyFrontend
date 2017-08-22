@@ -158,10 +158,11 @@ html, body {
 }
 
 .screen {
-    min-height: 70%;
+    min-height: 100%;
 }
 
 .screen_image {
+    padding-top: 60px;
     padding-bottom: 60px;
     text-align: center;
 }
@@ -170,12 +171,8 @@ html, body {
     min-height: 0;
 }
 
-#howitworks {
-    padding-top: 300px;
-    margin-bottom: 200px;
-}
 .screen__image {
-    max-width: 100%;
+    max-width: 75%;
 }
 
 .title {
@@ -464,4 +461,10 @@ html, body {
 
 .link_no-decor {
     text-decoration: none;
+}
+
+
+#howitworks {
+    margin-bottom: 200px;
+    margin-top: 100px;
 }
