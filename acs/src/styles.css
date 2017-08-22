@@ -457,3 +457,7 @@ html, body {
     height: 25px;
     cursor: pointer;
 }
+
+.link_no-decor {
+    text-decoration: none;
+}
