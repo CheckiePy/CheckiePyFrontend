@@ -403,8 +403,6 @@ html, body {
     pointer-events: auto;
 }
 
-
-
 .modal-dialog__card {
     width: 400px;
     position: relative;
@@ -464,7 +462,6 @@ html, body {
 .link_no-decor {
     text-decoration: none;
 }
-
 
 #howitworks {
     margin-bottom: 200px;
