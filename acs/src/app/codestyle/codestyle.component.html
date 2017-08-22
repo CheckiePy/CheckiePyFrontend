@@ -8,7 +8,7 @@
     </div>
     <ng-container *ngFor="let codeStyle of codeStyles">
         <div class="card">
-            <span class="card__text" routerLink="/codestyle/{{codeStyle.id}}">
+            <span class="card__text">
                 {{codeStyle.name}}
             </span>
             <div class="button-primary button-primary_card" (click)="deleteCodeStyle(codeStyle.id)">
