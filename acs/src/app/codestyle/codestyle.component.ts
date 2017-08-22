@@ -1,8 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {WebService} from "../web.service";
 import {CalculationStatus, CodeStyleModel} from "../app.models";
-import {MdlDialogReference, MdlDialogService} from "@angular-mdl/core";
-import {AddCodeStyleDialogComponent} from "../addcodestyledialog/addcodestyledialog.component";
 import {FormGroup, FormControl, Validators, FormBuilder} from "@angular/forms";
 import {Router} from "@angular/router";
 
@@ -22,7 +20,7 @@ export class CodeStyleComponent implements OnInit {
     showLoader = false;
     error = '';
 
-    constructor(private _router: Router, private _webService: WebService, private _dialogService: MdlDialogService, private _formBuilder: FormBuilder) {
+    constructor(private _router: Router, private _webService: WebService, private _formBuilder: FormBuilder) {
     }
 
     ngOnInit() {
