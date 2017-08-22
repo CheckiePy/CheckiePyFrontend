@@ -418,6 +418,7 @@ html, body {
     font-weight: 300;
     font-size: 18px;
     font-family: 'Muli', sans-serif;
+    margin-bottom: 5px;
 }
 
 .form-input {
