@@ -1,14 +1,14 @@
 import {Injectable} from '@angular/core';
 import {RequestOptions, Http, Headers} from "@angular/http";
 import {ResponseModel, RepositoryModel, CodeStyleModel, RepositoryUpdateModel} from "./app.models";
+import {environment} from '../environments/environment';
 
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class WebService {
 
-    //private _baseUrl = 'http://127.0.0.1:8000/api';
-    private _baseUrl = '/api';
+    private _baseUrl = environment.url;
     private _token: string;
     private _options: RequestOptions;
 

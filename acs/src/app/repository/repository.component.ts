@@ -14,7 +14,10 @@ export class RepositoryComponent implements OnInit {
     repositories: RepositoryModel[];
     hideRepositories = false;
     showLoader = false;
-    private _codeStyles: CodeStyleModel[];
+    showModal = false;
+    codeStyles: CodeStyleModel[];
+    repositoryId: number;
+    error = '';
 
     constructor(private _router: Router, private _webService: WebService, private _dialogService: MdlDialogService) {
     }
@@ -23,47 +26,60 @@ export class RepositoryComponent implements OnInit {
         this.loadRepositoryList();
     }
 
-    openCodeStyles() {
-        console.log("[RepositoryComponent] Open code styles clicked!");
-        this._router.navigate(['codestyle']);
-    }
-
     connectRepository(repositoryId) {
         this._webService.getCodeStyleList().then(response => {
             if (response.status == 200) {
-                this._codeStyles = response.result;
+                this.codeStyles = response.result;
                 console.log('[RepositoryComponent] Code styles were set');
             }
-            if (this._codeStyles == null || this._codeStyles.length == 0) {
+            if (this.codeStyles == null || this.codeStyles.length == 0) {
                 this.showDialogWithMessage('You need at least one code style to create connection');
             } else {
-                this.showConnectionDialog(repositoryId)
+                this.repositoryId = repositoryId;
+                this.showModal = true;
             }
         });
     }
 
-    private showConnectionDialog(repositoryId) {
-        let actions = [];
-        for (let codeStyle of this._codeStyles) {
-            actions.push({
-                handler: () => {
-                    this._webService.createRepositoryConnection(repositoryId, codeStyle.id).then(response => {
-                        // Todo: handle async
-                        let repository = this.repositories.find(r => r.id == repositoryId);
-                        repository.isConnected = true;
-                    });
-                },
-                text: codeStyle.name,
-                isClosingAction: true
-            });
+    private clearCodeStyleSelection() {
+        for (let i = 0; i < this.codeStyles.length; i++) {
+            this.codeStyles[i].selected = false;
         }
-        let dialog = this._dialogService.showDialog({
-            title: 'Select code style',
-            message: 'This code style will be used to check repository',
-            actions: actions as [IMdlDialogAction],
-            fullWidthAction: true,
-            isModal: false
+    }
+
+    closeModal() {
+        this.showModal = false;
+        this.repositoryId = null;
+    }
+
+    createConnection() {
+        let codeStyleId;
+        for (let i = 0; i < this.codeStyles.length; i++) {
+            if (this.codeStyles[i].selected) {
+                codeStyleId = this.codeStyles[i].id;
+                break;
+            }
+        }
+        if (codeStyleId == null) {
+            this.error = 'TODO: error message';
+            return;
+        }
+        this._webService.createRepositoryConnection(this.repositoryId, codeStyleId).then(response => {
+            // Todo: handle async
+            let repository = this.repositories.find(r => r.id == this.repositoryId);
+            repository.isConnected = true;
+            this.closeModal();
         });
+    }
+
+    selectCodeStyle(codeStyleId) {
+        this.clearCodeStyleSelection();
+        for (let i = 0; i < this.codeStyles.length; i++) {
+            if (this.codeStyles[i].id == codeStyleId) {
+                this.codeStyles[i].selected = true;
+            }
+        }
+        console.log('[RepositoryComponent] Code style with id ' + codeStyleId + 'was selected');
     }
 
     refreshRepositoryList() {

@@ -1,31 +1,12 @@
-<div class="demo-container" mdl-shadow="2">
-    <mdl-layout mdl-layout-fixed-header>
-        <mdl-layout-header>
-            <mdl-layout-header-row>
-                <mdl-layout-title>
-                    <img src="assets/images/logo_header.png" height="16px" style="margin-right: 3px;">acsproj.
-                </mdl-layout-title>
-                <mdl-layout-spacer></mdl-layout-spacer>
-                <!-- Navigation. We hide it in small screens. -->
-                <nav class="mdl-navigation">
-                    <!--<a routerLink="" class="mdl-navigation__link">Home</a>-->
-                    <!--<a routerLink="settings" class="mdl-navigation__link">Settings</a>-->
-                    <a (click)="logout()" class="mdl-navigation__link">Logout</a>
-                </nav>
-            </mdl-layout-header-row>
-        </mdl-layout-header>
-        <mdl-layout-content>
-            <!-- Your content goes here -->
-            <router-outlet style="padding: 100px;"></router-outlet>
-            <footer>
-                Developed by acsproj team
-                <br />
-                <span (click)="openGitHub()">
-                    <img src="assets/images/github.png" height="20px" style="margin-right: 2px;">
-                    GitHub
-                </span>
-            </footer>
-        </mdl-layout-content>
-    </mdl-layout>
-</div>
-
+<header class="header">
+    <span class="header__logo">
+        <img class="header__icon" src="/assets/images/logo.png">
+        CheckiePy
+    </span>
+    <nav class="header__nav">
+        <a class="header__a" routerLink="/codestyle">Code styles</a>
+        <a class="header__a" routerLink="/repository">Repositories</a>
+        <a class="header__a" href="" (click)="logout()">Log out</a>
+    </nav>
+</header>
+<router-outlet></router-outlet>

@@ -30,12 +30,14 @@ export class CodeStyleModel {
     name: string;
     repository: string;
     calculationStatus: string;
+    selected: boolean;
 
-    constructor(id?: number, name?: string, repository?: string, calculationStatus?: string) {
+    constructor(id?: number, name?: string, repository?: string, calculationStatus?: string, selected?: boolean) {
         this.id = id;
         this.name = name;
         this.repository = repository;
         this.calculationStatus = calculationStatus;
+        this.selected = selected;
     }
 
 }
