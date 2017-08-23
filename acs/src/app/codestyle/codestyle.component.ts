@@ -73,7 +73,7 @@ export class CodeStyleComponent implements OnInit {
                     } else {
                         console.log('[CodeStyleComponent] Dialog does not return code style');
                     }
-                    this.showModal = false;
+                    this.closeModal();
                 } else if (response.result.calculationStatus == CalculationStatus.failed) {
                     this.error = 'Code style creating is failed. Try again later';
                     this.disableControls = false;
