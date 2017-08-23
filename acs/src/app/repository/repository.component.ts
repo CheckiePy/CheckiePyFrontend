@@ -3,6 +3,7 @@ import {WebService} from "../web.service";
 import {RepositoryModel, CodeStyleModel, CalculationStatus} from "../app.models";
 import {MdlDialogService, IMdlDialogAction} from "@angular-mdl/core";
 import {Router} from "@angular/router";
+import {Title} from "@angular/platform-browser";
 
 @Component({
     selector: 'app-repository',
@@ -19,10 +20,11 @@ export class RepositoryComponent implements OnInit {
     repositoryId: number;
     error = '';
 
-    constructor(private _router: Router, private _webService: WebService, private _dialogService: MdlDialogService) {
+    constructor(private _router: Router, private _webService: WebService, private _dialogService: MdlDialogService, private _titleService: Title) {
     }
 
     ngOnInit() {
+        this._titleService.setTitle('Repositories');
         this.loadRepositoryList();
     }
 

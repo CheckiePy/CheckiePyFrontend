@@ -3,6 +3,7 @@ import {WebService} from "../web.service";
 import {CalculationStatus, CodeStyleModel} from "../app.models";
 import {FormGroup, FormControl, Validators, FormBuilder} from "@angular/forms";
 import {Router} from "@angular/router";
+import {Title} from "@angular/platform-browser";
 
 @Component({
     selector: 'app-codestyle',
@@ -20,10 +21,11 @@ export class CodeStyleComponent implements OnInit {
     showLoader = false;
     error = '';
 
-    constructor(private _router: Router, private _webService: WebService, private _formBuilder: FormBuilder) {
+    constructor(private _router: Router, private _webService: WebService, private _formBuilder: FormBuilder, private _titleService: Title) {
     }
 
     ngOnInit() {
+        this._titleService.setTitle('Code styles');
         this.form = this._formBuilder.group({
             'name': this.name,
             'repository': this.repository
