@@ -41,6 +41,8 @@ export class CodeStyleComponent implements OnInit {
 
     closeModal() {
         this.showModal = false;
+        this.form.reset();
+        this.disableControls = false;
     }
 
     createCodeStyle() {
