@@ -8,12 +8,20 @@
     </div>
     <div *ngIf="!hideRepositories">
         <ng-container *ngFor="let repository of repositories">
-            <div class="card">
+            <div class="card" *ngIf="!repository.isConnected">
                 <span class="card__text">
                     {{repository.name}}
                 </span>
                 <div class="button-primary button-primary_card" (click)="connectRepository(repository.id)" *ngIf="!repository.isConnected">
                     Connect
+                </div>
+            </div>
+            <div class="card" *ngIf="repository.isConnected">
+                <div class="card__text card__text_detailed">
+                    {{repository.name}}
+                    <div class="card__detail">
+                        {{repository.codeStyleName}}
+                    </div>
                 </div>
                 <div class="button-primary button-primary_card button-primary_negative" (click)="disconnectRepository(repository.id)" *ngIf="repository.isConnected">
                     Disconnect

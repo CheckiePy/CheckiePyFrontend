@@ -16,11 +16,13 @@ export class RepositoryModel {
     id: number;
     name: string;
     isConnected: boolean;
+    codeStyleName: string;
 
-    constructor(id?: number, name?: string, isConnected?: boolean) {
+    constructor(id?: number, name?: string, isConnected?: boolean, codeStyleName?: string) {
         this.id = id;
         this.name = name;
         this.isConnected = isConnected;
+        this.codeStyleName = codeStyleName;
     }
 }
 

@@ -54,7 +54,7 @@ export class WebService {
             let repositories: RepositoryModel[] = [];
             let objects = response.json() as object[];
             for (let obj of objects['result']) {
-                repositories.push(new RepositoryModel(obj['id'], obj['name'], obj['is_connected']));
+                repositories.push(new RepositoryModel(obj['id'], obj['name'], obj['is_connected'], obj['code_style_name']));
             }
             let r = new ResponseModel<RepositoryModel[]>(repositories);
             r.status = response.status;
