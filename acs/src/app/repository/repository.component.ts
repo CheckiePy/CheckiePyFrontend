@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {WebService} from "../web.service";
 import {RepositoryModel, CodeStyleModel, CalculationStatus} from "../app.models";
-import {MdlDialogService, IMdlDialogAction} from "@angular-mdl/core";
 import {Router} from "@angular/router";
 import {Title} from "@angular/platform-browser";
 
@@ -16,11 +15,13 @@ export class RepositoryComponent implements OnInit {
     hideRepositories = false;
     showLoader = false;
     showModal = false;
+    showErrorModal = false;
     codeStyles: CodeStyleModel[];
     repositoryId: number;
     error = '';
+    modalError = '';
 
-    constructor(private _router: Router, private _webService: WebService, private _dialogService: MdlDialogService, private _titleService: Title) {
+    constructor(private _router: Router, private _webService: WebService, private _titleService: Title) {
     }
 
     ngOnInit() {
@@ -35,7 +36,7 @@ export class RepositoryComponent implements OnInit {
                 console.log('[RepositoryComponent] Code styles were set');
             }
             if (this.codeStyles == null || this.codeStyles.length == 0) {
-                this.showDialogWithMessage('You need at least one code style to create connection');
+                this.openErrorModal('You need at least one code style to create connection');
             } else {
                 this.repositoryId = repositoryId;
                 this.showModal = true;
@@ -52,6 +53,15 @@ export class RepositoryComponent implements OnInit {
     closeModal() {
         this.showModal = false;
         this.repositoryId = null;
+    }
+
+    openErrorModal(error: string) {
+        this.modalError = error;
+        this.showErrorModal = true;
+    }
+
+    closeErrorModal() {
+        this.showErrorModal = false;
     }
 
     createConnection() {
@@ -92,7 +102,7 @@ export class RepositoryComponent implements OnInit {
                 this.showLoader = true;
                 this.pollRepositoryUpdateStatus();
             } else {
-                this.showDialogWithMessage('Cannot refresh repository list. Error code: ' + response.status);
+                this.openErrorModal('Cannot refresh repository list. Error code: ' + response.status);
             }
         });
     }
@@ -103,7 +113,7 @@ export class RepositoryComponent implements OnInit {
                 this.repositories = response.result;
                 console.log('[RepositoryComponent] Repositories were set');
             } else {
-                this.showDialogWithMessage('Cannot refresh repository list. Error code: ' + response.status);
+                this.openErrorModal('Cannot refresh repository list. Error code: ' + response.status);
                 this.showLoader = false;
                 this.hideRepositories = false;
             }
@@ -118,7 +128,7 @@ export class RepositoryComponent implements OnInit {
                     this.showLoader = false;
                     this.hideRepositories = false;
                 } else if (response.result.status == CalculationStatus.failed) {
-                    this.showDialogWithMessage('Repository list refreshing failed. Try again later');
+                    this.openErrorModal('Repository list refreshing failed. Try again later');
                     this.showLoader = false;
                     this.hideRepositories = false;
                 } else if (response.result.status == CalculationStatus.started) {
@@ -126,7 +136,7 @@ export class RepositoryComponent implements OnInit {
                     console.log('[RepositoryComponent] Timeout was set');
                 }
             } else {
-                this.showDialogWithMessage('Cannot refresh repository list. Error code: ' + response.status);
+                this.openErrorModal('Cannot refresh repository list. Error code: ' + response.status);
                 this.showLoader = false;
                 this.hideRepositories = false;
             }
@@ -142,10 +152,6 @@ export class RepositoryComponent implements OnInit {
                 }
             }
         });
-    }
-
-    private showDialogWithMessage(message) {
-        this._dialogService.alert(message);
     }
 
 }
