@@ -65,21 +65,22 @@ export class RepositoryComponent implements OnInit {
     }
 
     createConnection() {
-        let codeStyleId;
+        let codeStyle;
         for (let i = 0; i < this.codeStyles.length; i++) {
             if (this.codeStyles[i].selected) {
-                codeStyleId = this.codeStyles[i].id;
+                codeStyle = this.codeStyles[i];
                 break;
             }
         }
-        if (codeStyleId == null) {
-            this.error = 'TODO: error message';
+        if (codeStyle == null) {
+            this.error = 'You should check desired code style';
             return;
         }
-        this._webService.createRepositoryConnection(this.repositoryId, codeStyleId).then(response => {
+        this._webService.createRepositoryConnection(this.repositoryId, codeStyle.id).then(response => {
             // Todo: handle async
             let repository = this.repositories.find(r => r.id == this.repositoryId);
             repository.isConnected = true;
+            repository.codeStyleName = codeStyle.name;
             this.closeModal();
         });
     }
