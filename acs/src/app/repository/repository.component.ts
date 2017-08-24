@@ -113,6 +113,7 @@ export class RepositoryComponent implements OnInit {
         this._webService.getRepositoryList().then(response => {
             if (response.status == 200) {
                 this.repositories = response.result;
+                this.showLoader = false;
                 console.log('[RepositoryComponent] Repositories were set');
             } else {
                 this.openErrorModal('Cannot refresh repository list. Error code: ' + response.status);
