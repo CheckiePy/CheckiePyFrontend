@@ -25,6 +25,7 @@ export class RepositoryComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.showLoader = true;
         this._titleService.setTitle('Repositories');
         this.loadRepositoryList();
     }
