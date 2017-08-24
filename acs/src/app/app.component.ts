@@ -25,7 +25,7 @@ export class AppComponent implements OnInit {
                     console.log('Token was set');
                 }
                 this.isAuthenticated = this._webService.isAuthenticated();
-                //for debug
+                //TODO: debug
                 //this.isAuthenticated = true;
                 let pathEndIndex = this._router.url.indexOf('?');
                 let url = pathEndIndex == -1 ? this._router.url : this._router.url.substring(0, pathEndIndex);

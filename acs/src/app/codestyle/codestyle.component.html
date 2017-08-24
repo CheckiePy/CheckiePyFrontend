@@ -3,7 +3,7 @@
         Code styles
     </div>
     <div *ngIf="!codeStyles" class="loader"></div>
-    <div class="message-box" *ngIf="!codeStyles || codeStyles.length == 0">
+    <div class="message-box" *ngIf="codeStyles && codeStyles.length == 0">
         You have no code styles
     </div>
     <ng-container *ngFor="let codeStyle of codeStyles">

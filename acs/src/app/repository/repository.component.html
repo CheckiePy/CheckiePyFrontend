@@ -3,7 +3,7 @@
         Repositories
     </div>
     <div class="loader" *ngIf="showLoader"></div>
-    <div class="message-box" *ngIf="!repositories || repositories.length == 0">
+    <div class="message-box" *ngIf="repositories && repositories.length == 0">
         You have no repositories or they didn't loaded yet. Press refresh button to update
     </div>
     <div *ngIf="!hideRepositories">
