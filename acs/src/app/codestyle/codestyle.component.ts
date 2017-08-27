@@ -77,7 +77,7 @@ export class CodeStyleComponent implements OnInit {
                     }
                     this.closeModal();
                 } else if (response.result.calculationStatus == CalculationStatus.failed) {
-                    this.error = 'Code style creating is failed. Try again later';
+                    this.error = "Can't create code style. Please, check if you type in repository clone address in following way: https://github.com/acsproj/acsbackend.git";
                     this.disableControls = false;
                     this.showLoader = false;
                 }

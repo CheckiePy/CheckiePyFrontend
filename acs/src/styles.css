@@ -405,7 +405,7 @@ html, body {
 }
 
 .modal-dialog__card {
-    width: 400px;
+    width: 550px;
     position: relative;
     margin: 10% auto;
     padding: 25px 50px;
@@ -480,4 +480,27 @@ html, body {
 
 .github {
     color: #14dcaf;
+    margin-left: 10px;
+}
+
+::-webkit-input-placeholder {
+    color: #cfcfcf;
+}
+
+:-moz-placeholder {
+    color: #cfcfcf;
+    opacity: 1;
+}
+
+::-moz-placeholder {
+    color: #cfcfcf;
+    opacity: 1;
+}
+
+:-ms-input-placeholder {
+    color: #cfcfcf;
+}
+
+::-ms-input-placeholder {
+    color: #cfcfcf;
 }
