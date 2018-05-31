@@ -7,8 +7,7 @@ import {Title} from "@angular/platform-browser";
 
 @Component({
     selector: 'app-codestyle',
-    templateUrl: './codestyle.component.html',
-    styleUrls: ['./codestyle.component.css']
+    templateUrl: './codestyle.component.html'
 })
 export class CodeStyleComponent implements OnInit {
 

@@ -6,8 +6,7 @@ import {Title} from "@angular/platform-browser";
 
 @Component({
     selector: 'app-repository',
-    templateUrl: './repository.component.html',
-    styleUrls: ['./repository.component.css']
+    templateUrl: './repository.component.html'
 })
 export class RepositoryComponent implements OnInit {
 
