@@ -14,12 +14,15 @@ export class MainComponent implements OnInit {
     ngOnInit() {
     }
 
-    openGitHub() {
-        window.open('https://github.com/acsproj');
-    }
-
     logout() {
-        this._webService.logout();
-        window.location.reload();
+        this._webService.logout().then(response => {
+            if (response.status == 200 && response.result) {
+                this._webService.setToken(null);
+                window.location.reload();
+            } else {
+                // TODO: Logout error message
+                console.log('Error message');
+            }
+        });
     }
 }

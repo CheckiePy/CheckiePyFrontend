@@ -45,6 +45,7 @@ html, body {
 
 .header__a:hover {
     text-decoration: underline;
+    cursor: pointer;
 }
 
 .header__logo {

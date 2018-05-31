@@ -13,9 +13,7 @@ export class WebService {
     private _options: RequestOptions;
 
     constructor(private _http: Http) {
-        this._token = localStorage.getItem('token');
-        console.log('Restored token ' + this._token);
-        this.updateOptions();
+        this.setToken(localStorage.getItem('token'));
     }
 
     private updateOptions() {
@@ -37,14 +35,19 @@ export class WebService {
     }
 
     isAuthenticated(): boolean {
-        return this._token != null;
+        console.log('Token (isAuthenticated): ' + this._token);
+        return !!this._token;
     }
 
     setToken(token: string) {
         this._token = token;
-        localStorage.setItem('token', this._token);
-        console.log('Saved token ' + this._token);
+        if (token == null) {
+            localStorage.removeItem('token');
+        } else {
+            localStorage.setItem('token', this._token);
+        }
         this.updateOptions();
+        console.log('Updated token ' + this._token);
     }
 
     getRepositoryList(): Promise<ResponseModel<RepositoryModel[]>> {
@@ -60,7 +63,7 @@ export class WebService {
             r.status = response.status;
             console.log(r);
             return r;
-        }).catch(this.handleError);
+        }).catch(this.handleError.bind(this));
     }
 
     getCodeStyleList(): Promise<ResponseModel<CodeStyleModel[]>> {
@@ -71,7 +74,7 @@ export class WebService {
             r.status = response.status;
             console.log(r);
             return r;
-        }).catch(this.handleError);
+        }).catch(this.handleError.bind(this));
     }
 
     deleteCodeStyle(id): Promise<ResponseModel<number>> {
@@ -81,7 +84,7 @@ export class WebService {
             let r = response.json() as ResponseModel<number>;
             console.log(r);
             return r;
-        }).catch(this.handleError);
+        }).catch(this.handleError.bind(this));
     }
 
     createCodeStyle(name, repository): Promise<ResponseModel<CodeStyleModel>> {
@@ -93,7 +96,7 @@ export class WebService {
             r.status = response.status;
             console.log(r);
             return r;
-        }).catch(this.handleError);
+        }).catch(this.handleError.bind(this));
     }
 
     createRepositoryConnection(repositoryId, codeStyleId): Promise<ResponseModel<number>> {
@@ -105,7 +108,7 @@ export class WebService {
             r.status = response.status;
             console.log(r);
             return r;
-        }).catch(this.handleError);
+        }).catch(this.handleError.bind(this));
     }
 
     deleteRepositoryConnection(repositoryId) {
@@ -115,7 +118,7 @@ export class WebService {
             let r = response.json() as ResponseModel<number>;
             console.log(r);
             return r;
-        }).catch(this.handleError);
+        }).catch(this.handleError.bind(this));
     }
 
     updateRepositoryList(): Promise<ResponseModel<string>> {
@@ -126,13 +129,18 @@ export class WebService {
             r.status = response.status;
             console.log(r);
             return r;
-        }).catch(this.handleError);
+        }).catch(this.handleError.bind(this));
     }
 
-    logout() {
-        localStorage.removeItem('token');
-        this._token = null;
-        this.updateOptions();
+    logout(): Promise<ResponseModel<boolean>> {
+        let path = '/logout/';
+        this.logRequest(path);
+        return this._http.post(this._baseUrl + path, '', this._options).toPromise().then(response => {
+            let r = response.json() as ResponseModel<boolean>;
+            r.status = response.status;
+            console.log(r);
+            return r;
+        }).catch(this.handleError.bind(this));
     }
 
     readCodeStyle(id): Promise<ResponseModel<CodeStyleModel>> {
@@ -149,7 +157,7 @@ export class WebService {
             }
             console.log(r);
             return r;
-        }).catch(this.handleError);
+        }).catch(this.handleError.bind(this));
     }
 
     readLastRepositoryUpdate(): Promise<ResponseModel<RepositoryUpdateModel>> {
@@ -160,11 +168,16 @@ export class WebService {
             r.status = response.status;
             console.log(r);
             return r;
-        }).catch(this.handleError);
+        }).catch(this.handleError.bind(this));
     }
 
     private handleError(response) {
-        // Don't take any action
+        console.log('Error: ' + response);
+        if (response.status == 401) {
+            this.setToken(null);
+            // TODO: unauthorized message
+            window.location.reload();
+        }
         return response;
     }
 }

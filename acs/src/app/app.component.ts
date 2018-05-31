@@ -19,14 +19,13 @@ export class AppComponent implements OnInit {
             if (event instanceof NavigationEnd) {
                 let urlTree = this._router.parseUrl(this._router.url);
                 let token = urlTree.queryParams['token'];
-                console.log('Token: ' + token);
+                console.log('Token (app): ' + token);
                 if (token != null) {
                     this._webService.setToken(token);
                     console.log('Token was set');
                 }
                 this.isAuthenticated = this._webService.isAuthenticated();
-                //TODO: debug
-                //this.isAuthenticated = true;
+                console.log('Is authenticated: ' + this.isAuthenticated);
                 let pathEndIndex = this._router.url.indexOf('?');
                 let url = pathEndIndex == -1 ? this._router.url : this._router.url.substring(0, pathEndIndex);
                 this._router.navigate([url]);

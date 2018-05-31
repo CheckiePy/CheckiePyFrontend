@@ -23,7 +23,7 @@
 <div class="modal-dialog modal-dialog_visible" *ngIf="showModal">
     <div class="modal-dialog__card">
         <div class="message-box">
-            Enter repository clone address and code style name
+            Enter a repository clone address and a code style name
         </div>
         <form [formGroup]="form">
             {{error}}
@@ -32,7 +32,7 @@
                     <label>Repository</label>
                 </div>
                 <div>
-                    <input class="form-input" type="text" formControlName="repository" placeholder="https://github.com/acsproj/acsfrontend.git">
+                    <input class="form-input" type="text" formControlName="repository" placeholder="https://github.com/CheckiePy/CheckiePyFrontend.git">
                 </div>
             </div>
             <div class="form-group">

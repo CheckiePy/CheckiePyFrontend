@@ -77,12 +77,13 @@ export class CodeStyleComponent implements OnInit {
                     }
                     this.closeModal();
                 } else if (response.result.calculationStatus == CalculationStatus.failed) {
-                    this.error = "Can't create code style. Please, check if you type in repository clone address in following way: https://github.com/acsproj/acsbackend.git";
+                    this.error = 'Can\'t create the code style. Please, check if you type the repository clone ' +
+                        'address in the following way: https://github.com/CheckiePy/CheckiePyBackend';
                     this.disableControls = false;
                     this.showLoader = false;
                 }
             } else {
-                this.error = 'Cannot create code style. Error code: ' + response.status;
+                this.error = 'Can\'t create the code style. Error code: ' + response.status;
                 this.disableControls = false;
                 this.showLoader = false;
             }
